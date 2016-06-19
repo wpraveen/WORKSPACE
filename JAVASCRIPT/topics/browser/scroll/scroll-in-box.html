@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        #container{
+            margin: 50px;
+            height: 300px;
+            width: 150px;
+            overflow: scroll;
+            position: relative;
+        }
+
+
+        h1 {
+            margin: 100px auto;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="container">
+
+    <h1 id="top">Top Heading</h1>
+
+    <h1 id="middle">Middle heading</h1>
+
+    <h1 id="bottom">Bottom Heading</h1>
+</div>
+
+
+<script>
+    console.group("Diffrence of BoundingClientRect and offset left and Top value become evident in relative positioning");
+    console.log("BoundingClientRect: ", document.getElementById("top").getBoundingClientRect());
+    console.log("offsetLeft: ", document.getElementById("top").offsetLeft);
+    console.log("offsetTop: ", document.getElementById("top").offsetTop);
+    console.log("offsetParent: ", document.getElementById("top").offsetParent);
+
+
+
+    setTimeout(function(){
+        document.getElementById("container").scrollLeft = document.getElementById("bottom").offsetLeft;
+        document.getElementById("container").scrollTop = document.getElementById("bottom").offsetTop;
+    },2000);
+
+
+    console.groupEnd();
+</script>
+</body>
+</html>

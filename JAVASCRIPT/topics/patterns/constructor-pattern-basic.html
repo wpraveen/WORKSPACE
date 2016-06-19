@@ -1,0 +1,17 @@
+<script>
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+
+    this.sayName = function() {
+        alert("Hi " + this.firstName + "" + this.lastName);
+    };
+}
+
+var praveen = new Person("Praveen", "Singh");
+
+var annu = new Person("Annu", "Singh");
+
+var isSame = annu.sayName === praveen.sayName; //return false as they create separate 
+//function object in memory.
+</script>

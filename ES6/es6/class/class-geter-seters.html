@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+class User {
+
+    constructor() {}
+
+    get firstName() {
+        return this._firstName;
+    }
+
+    set firstName(value) {
+        this._firstName = value;
+    }
+
+    get lastName() {
+        return this._lastName;
+    }
+
+    set lastName(value) {
+        this._lastName = value;
+    }
+
+    toString() {
+        return `My first name is ${this.firstName} and last name is ${this.lastName}`;
+    }
+}
+
+let user = new User();
+user.firstName = "parveen";
+user.lastName = "Singh";
+
+console.log(user.toString());
+    </script>
+</body>
+
+</html>

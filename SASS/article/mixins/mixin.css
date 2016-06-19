@@ -1,0 +1,27 @@
+/* line 16, mixin.scss */
+.box {
+  width: 150px;
+  height: 150px;
+}
+
+/* line 21, mixin.scss */
+.red-border {
+  border: 4px solid red;
+}
+
+/* line 25, mixin.scss */
+.bold-blue {
+  color: #00abff;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/* line 29, mixin.scss */
+.red-bold {
+  border: 10px solid red;
+  color: #00abff;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/*# sourceMappingURL=mixin.css.map */

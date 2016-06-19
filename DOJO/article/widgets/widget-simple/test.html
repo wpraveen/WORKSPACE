@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter</title>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/article/widgets/widget-simple"
+        }]
+    };
+    </script>
+
+</head>
+
+<body>
+    <div id="widgetContainer"></div>
+
+    <script src="/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require(["app/SimpleWidget"],
+        function(SimpleWidget) {
+            var widget = new SimpleWidget();
+            widget.placeAt("widgetContainer");
+        });
+    </script>
+</body>
+
+</html>

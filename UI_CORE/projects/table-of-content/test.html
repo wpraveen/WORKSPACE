@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    .table {
+        display: table;
+        table-layout: fixed;
+        box-sizing: border-box;
+    }
+    
+    .tableCell {
+        display: table-cell;
+        vertical-align: top;
+    }
+    
+    .tableRow {
+        display: table-row;
+        vertical-align: top;
+    }
+    
+    .rightAligned {
+        text-align: right;
+    }
+    
+    .leftAligned {
+        text-align: left;
+    }
+    
+    .centerAligned {
+        text-align: center;
+    }
+    
+    .width100Percent {
+        width: 70%;
+    }
+    
+    .something,.action {
+        width: 100px;
+    }
+
+
+    .dotted-line-cell{
+         max-width: 40em;
+        padding: 0;
+        overflow-x: hidden;
+
+    }
+
+
+    .dotted-line-cell>span:before{
+        float: left;
+        width: 0;
+        white-space: nowrap;
+        content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+    }
+
+
+      .dotted-line-cell>span span:first-child {
+        padding-right: 0.33em;
+        background: white
+    }
+    
+    .dotted-line-cell>span .yo {
+        float: right;
+            padding-left: 0.33em;
+            background: white;
+            position: relative;
+            z-index: 1
+    }
+
+
+    .float-left{
+        float:right;
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Test</h1>
+    <div class="table width100Percent">
+        <div class="tableRow">
+            <div class="tableCell dotted-line-cell"><span><span>test</span><span class="yo">test</span></span></div>
+            <div class="tableCell action"><a href="#">Adjust</a></div>
+             <div class="tableCell something">something</div>
+        </div>
+<!--
+         <div class="tableRow">
+            <div class="tableCell dotted-line-cell"><span><span>test</span><span>test</span></span></div>
+            <div class="tableCell action"></div>
+        </div>
+         <div class="tableRow">
+            <div class="tableCell dotted-line-cell"><span><span>test</span><span>test</span></span></div>
+            <div class="tableCell action"><a href="#">Adjust</a></div>
+        </div>
+-->
+       
+    </div>
+</body>
+
+</html>

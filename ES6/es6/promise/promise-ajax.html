@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+        function ajax(method, url) {
+            return new Promise(function pr(resolve, reject) {
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        var json = JSON.parse(xhttp.responseText);
+                        console.log(json);
+                        resolve(json);
+                    }
+                };
+                xhttp.open(method, url, true);
+                xhttp.send();
+            });
+        }
+
+        ajax("GET", "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=2de143494c0b295cca9337e1e96b00e0").then(function(data){
+            document.write("<pre>" + JSON.stringify(data,null,4) + "</pre>");
+
+        });
+
+    </script>
+</body>
+
+</html>

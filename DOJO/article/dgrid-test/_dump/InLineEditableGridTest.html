@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/dgrid/css/skins/claro.css">
+</head>
+
+<body class="claro">
+    <h1>Grid Test</h1>
+    <div id="grid"></div>
+
+
+    <script src="/DOJO_TEST/dojo/dojo.js"></script>
+    <script type="text/javascript">
+    require(["dojo/_base/declare", "dojo/store/Memory", 'dojo/store/Observable', "dgrid/OnDemandGrid", "dgrid/editor", "dgrid/Keyboard", "dgrid/Selection", "dojo/json", "dojo/store/util/SimpleQueryEngine", "dojo/domReady!"], function(declare, Memory, Observable, OnDemandGrid, editor, Keyboard, Selection, json, SimpleQueryEngine) {
+           var sampleData = [
+	        { id="1",first: "Bob", last: "Barker", age: 89 },
+	        { id="2",first: "Vanna", last: "White", age: 55 },
+	        { id="3",first: "Pat", last: "Sajak", age: 65 }
+	    ]; 
+     
+        var myStore = new Memory({
+            data: sampleData,
+            idProperty: "name"
+        });
+        var grid = new(declare([OnDemandGrid, Keyboard, Selection]))({
+            store: myStore,
+            autoSave: true,
+            columns: [
+                editor({
+                    label: "Name",
+                    field: "name",
+                    editor: "text",
+                    editOn: "dblclick",
+                    autoSave: true
+                })
+            ]
+        }, "grid");
+        grid.on("dgrid-datachange", function(evt) {
+            console.log("Data has been change");
+            console.log(json.stringify(myStore.data));
+        }); 
+    });
+    </script>
+</body>
+
+</html>

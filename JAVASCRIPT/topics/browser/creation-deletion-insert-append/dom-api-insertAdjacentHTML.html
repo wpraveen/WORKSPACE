@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <span id="myName">praveen</span>
+
+    <script>
+        var elm = document.getElementById('myName');
+        elm.insertAdjacentHTML('beforebegin', '<span>My </span>');
+        elm.insertAdjacentHTML('afterbegin', '<span>name is </span>');
+        elm.insertAdjacentHTML('beforeend', '<span> the </span>');
+        elm.insertAdjacentHTML('afterend', '<span> great </span>');
+
+    </script>
+</body>
+
+</html>

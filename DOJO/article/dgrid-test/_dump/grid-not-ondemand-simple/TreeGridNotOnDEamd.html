@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app/dgrid-test/grid-not-ondemand-simple"
+        }]
+    };
+    </script>
+
+</head>
+
+<body class="claro">
+    <h1>Simple Grid Test</h1>
+    <div id="grid"></div>
+
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+            "dgrid/Grid",
+            "dojo/store/Memory",
+            "app/data"
+        ],
+      
+        function(Grid, Memory, data) {
+
+            // function getStore() {
+            //     var store = new Memory({
+            //         data: data
+            //     });
+            //     return store;
+            // }
+
+            function getColumns() {
+
+                var columns = [{
+                    label: "First Name",
+                    field: "firstName",
+                    sortable: true,
+                },
+                {
+                    label: "Last Name",
+                    field: "lastName",
+                    sortable: true,
+                },{
+                    label: "Age",
+                    field: "age",
+                    sortable: true,
+                }];
+                return columns;
+            }
+
+            var grid = new Grid({
+                columns: getColumns()
+            }, "grid");
+
+
+            grid.renderArray(data);
+
+        });
+    </script>
+
+</html>

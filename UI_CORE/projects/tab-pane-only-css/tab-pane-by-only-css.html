@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+
+    <style>
+        .tab {
+            background-color: aliceblue;
+            height: 500px;
+            width: 500px;
+            margin: 10px;
+            display: none;
+        }
+        
+        .tab-link a {
+            margin: 0 5px;
+        }
+        
+        .tab:target {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="tab-link"><a href="#tab1">Tab 1</a> <a href="#tab2">Tab 2</a> <a href="#tab3">Tab 3</a></div>
+
+    <div id="tab1" class="tab">
+        <h1>Tab 1</h1>
+
+    </div>
+
+    <div id="tab2" class="tab">
+        <h1>Tab 2</h1>
+    </div>
+
+    <div id="tab3" class="tab">
+        <h1>Tab 3</h1>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div id="host"></div>
+
+    <template>
+        <h1 class="hello-sd">Hello world  by Shadow Dom</h1>
+    </template>
+
+    <script>
+        
+        var host = document.getElementById("host");
+        var template = document.querySelector("template");
+        
+        var shadowRoot = host.createShadowRoot();
+        shadowRoot.appendChild(document.importNode(template.content,true));
+        
+        
+    </script>
+</body>
+
+</html>

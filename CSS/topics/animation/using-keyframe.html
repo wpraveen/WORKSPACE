@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <style>
+        .circle {
+            width: 200px;
+            height: 200px;
+            background-color: #0099FF;
+            border-radius: 50%;
+        }
+        
+        #myCircle {
+            animation: slide 2s infinite;
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translate3d(0px, 0px, 0px);
+            }
+            50% {
+                transform: translate3d(800px, 0px, 0px);
+            }
+            100% {
+                transform: translate3d(0px, 0px, 0px);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div id="myCircle" class="circle"></div>
+
+</body>
+
+</html>

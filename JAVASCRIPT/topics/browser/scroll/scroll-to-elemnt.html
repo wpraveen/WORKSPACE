@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+
+        h1{
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<h1 id="top">Top Heading</h1>
+
+<h1 id="middle">Middle heading</h1>
+
+<h1 id="bottom">Bottom Heading</h1>
+
+
+<script>
+
+    console.log(document.getElementById("top").getBoundingClientRect());
+
+
+    setTimeout(function(){
+        var bottomBox = document.getElementById("bottom").getBoundingClientRect();
+        window.scrollTo(bottomBox.left,bottomBox.top);
+
+    },2000);
+
+</script>
+</body>
+</html>

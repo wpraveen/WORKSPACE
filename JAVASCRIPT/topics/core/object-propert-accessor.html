@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1>Test</h1>
+</body>
+
+</html>
+<script type="text/javascript">
+/**
+ * You don’t need to define both a getter and a setter; you can choose one or both. 
+ * If you define only a getter, then the property becomes "read-only", and attempts to write to it will fail 
+ * silently in nonstrict mode and throw an error in strict mode. If you define only a setter, 
+ * then the property becomes write-only, and attempts to read the value will fail silently in both 
+ * strict and nonstrict modes.
+ */
+var person1 = {
+    _name: "Nicholas",
+    get name() {
+        console.log("Reading name");
+        return this._name;
+    }
+
+};
+console.log(person1.name);
+person1.name = "Greg";
+console.log(person1.name);
+</script>

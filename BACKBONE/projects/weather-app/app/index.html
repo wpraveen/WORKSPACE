@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>web pro sample</title>
+
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap-theme.css">
+
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <div id="page-container">
+
+    </div>
+    <footer>
+
+    </footer>
+
+    <script src="../libs/require/require.js"></script>
+    <script type="text/javascript">
+    require(['../config/require.config.js'], function() {
+        require([
+            "app/main"
+        ], function(main) {
+            'use strict';
+
+            main.start();
+        });
+    });
+    </script>
+</body>
+
+</html>

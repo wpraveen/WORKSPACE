@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div id="simpleView">Collections</div>
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/backbone/underscore.js"></script>
+    <script src="../../lib/backbone/backbone.js"></script>
+    <script type="text/javascript">
+    var Todo = Backbone.Model.extend({
+        
+        defaults: {
+
+            title: '',
+            completed: false
+        }
+    });
+
+    var TodosCollection = Backbone.Collection.extend({
+        idAttribute: "name",
+        model: Todo
+    });
+
+
+    var a = new Todo({
+            id: "1",
+            title: 'Go to Jamaica.'
+        }),
+        b = new Todo({
+            id: "2",
+
+            title: 'Go to China.'
+        }),
+        c = new Todo({
+            id: "3",
+            title: 'Go to Disneyland.'
+        });
+
+    var todos = new TodosCollection([a, b]);
+    console.log("Collection size: " + todos.length);
+
+    todos.add(c);
+
+
+    console.log("TEST: ", todos.get("3"));
+    </script>
+</body>
+
+</html>

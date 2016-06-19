@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 400px;
+            height: 500px;
+            overflow: auto;
+        }
+        
+        .box {
+            width: 300px;
+            height: 300px;
+            margin: 10px auto;
+            background-color: antiquewhite;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>HTML Start</h1>
+
+    <div id="container" class="container">
+        <div class="box">BOX 1</div>
+        <div class="box">BOX 2</div>
+        <div class="box">BOX 3</div>
+        <div class="box">BOX 4</div>
+        <div class="box">BOX 5</div>
+        <div class="box">BOX 6</div>
+        <div class="box">BOX 7</div>
+        <div class="box">BOX 8</div>
+        <div class="box">BOX 9</div>
+        <div class="box">BOX 10</div>
+    </div>
+
+    <script>
+        var div = document.querySelector('#container');
+        var halfPoint = Math.round(div.scrollHeight/2);
+        div.scrollTop = halfPoint;
+
+
+    </script>
+</body>
+
+</html>

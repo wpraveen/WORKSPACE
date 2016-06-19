@@ -1,0 +1,34 @@
+@mixin red-border($size: 1px) {
+    border: $size solid red;
+}
+
+@mixin bold-blue-font {
+    color: rgb(0, 171, 255);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+@mixin box-() {}
+
+.box {
+    width: 150px;
+    height: 150px;
+}
+
+.red-border {
+    @include red-border(4px);
+    
+    .box {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.bold-blue {
+    @include bold-blue-font;
+}
+
+.red-bold {
+    @include red-border(10px);
+    @include bold-blue-font;
+}

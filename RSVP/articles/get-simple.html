@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1>Test</h1>
+
+	<script type="text/javascript" src="../lib/rsvp-latest.js"></script>
+    <script type="text/javascript">
+	
+var getJSON = function(url) {
+  var promise = new RSVP.Promise(function(resolve, reject){
+    var client = new XMLHttpRequest();
+    client.open("GET", url);
+    client.onreadystatechange = handler;
+    client.responseType = "json";
+    client.setRequestHeader("Accept", "application/json");
+    client.send();
+
+    function handler() {
+      if (this.readyState === this.DONE) {
+        if (this.status === 200) { resolve(this.response); }
+        else { reject(this); }
+      }
+    };
+  });
+
+  return promise;
+};
+
+getJSON("http://localhost:9999/user").then(function(json) {
+  debugger;
+}, function(error) {
+	 debugger;
+  // handle errors
+});
+
+
+	
+</script>
+</body>
+</html>
+
+

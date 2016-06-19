@@ -1,0 +1,102 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    .container {
+        border: 2px dashed gray;
+        margin: 100px 100px;
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+    .box {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(211, 211, 211, .3);
+        color: rgba(211, 211, 211, 1);
+    }
+    .box h1 {
+        margin: 0;
+        padding: 50px 0 0 30px;
+    }
+    .rotate15deg {
+        -webkit-transform: rotate(15deg);
+        -moz-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        -o-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+    .transform-origin-top-left {
+        -webkit-transform-origin: 0% 0%;
+        -moz-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
+        -o-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+    }
+    .transform-origin-top-right {
+        -webkit-transform-origin: 100% 0%;
+        -moz-transform-origin: 100% 0%;
+        -ms-transform-origin: 100% 0%;
+        -o-transform-origin: 100% 0%;
+        transform-origin: 100% 0%;
+    }
+    .transform-origin-bottom-left {
+        -webkit-transform-origin: 0% 100%;
+        -moz-transform-origin: 0% 100%;
+        -ms-transform-origin: 0% 100%;
+        -o-transform-origin: 0% 100%;
+        transform-origin: 0% 100%;
+    }
+    .transform-origin-bottom-right {
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box ">
+            <h1>rotate0deg</h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="box rotate15deg">
+            <h1>rotate15deg</h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="box rotate15deg transform-origin-top-left">
+            <h1>top-left</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box rotate15deg transform-origin-top-right">
+            <h1>top-right</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box rotate15deg transform-origin-bottom-left">
+            <h1>bottom-left</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box rotate15deg transform-origin-bottom-right">
+            <h1>bottom-right</h1>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+{{#each people}}
+                {{firstName}}
+                {{lastName}}
+                <br>
+{{/each}}

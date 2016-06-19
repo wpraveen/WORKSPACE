@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <div id="simpleView">Default</div>
+
+
+
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/backbone/underscore.js"></script>
+    <script src="../../lib/backbone/backbone.js"></script>
+    <script type="text/javascript">
+    var app = app || {};
+
+    var SimpleView = Backbone.View.extend({
+        tagName: 'article',
+        className: 'container',
+        id: 'simpleView',
+
+        initialize: function() {
+            console.log("Init View");
+        },
+        
+        render: function() {
+
+            console.log("In render");
+            this.$el.html("<h1>This is a simplest view possible<h1>");
+            return this;
+        }
+    });
+
+    var simpleView = new SimpleView();
+
+    $("#simpleView").html(simpleView.render().el);
+
+    //console.log(simpleView.el);
+    </script>
+</body>
+
+</html>

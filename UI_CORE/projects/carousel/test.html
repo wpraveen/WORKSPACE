@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .carousel {
+            white-space: nowrap;
+            position: static;
+            border: 1px solid red;
+            width: 800px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .card {
+            height: 200px;
+            width: 300px;
+            background: #f2f2f2;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+            margin: 0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <button onclick="carousel.prev()">Previous</button>
+    <button onclick="carousel.next()">Next</button>
+    <div class="carousel" id="carousel">
+        <div id="card1" class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 5</div>
+        <div class="card">Card 6</div>
+        <div class="card">Card 7</div>
+        <div class="card">Card 8</div>
+        <div class="card">Card 9</div>
+        <div class="card">Card 10</div>
+    </div>
+
+
+    <script>
+        function Carousel(args) {
+
+            return {
+
+                moveX: 0,
+
+                element: args.element,
+
+                next: function() {
+
+                    var carousel = document.getElementById("carousel");
+                    var cardWidth = Math.round(carousel.scrollWidth / 10);
+                    carousel.scrollLeft = carousel.scrollLeft + cardWidth;
+
+                },
+                prev: function() {
+                    var carousel = document.getElementById("carousel");
+                     var cardWidth = Math.round(carousel.scrollWidth / 10);
+                    carousel.scrollLeft = carousel.scrollLeft - cardWidth;
+
+                }
+
+            }
+
+        }
+
+        var carousel = new Carousel({
+            element: document.getElementById("carousel"),
+            delay: 350
+        });
+
+    </script>
+</body>
+
+</html>

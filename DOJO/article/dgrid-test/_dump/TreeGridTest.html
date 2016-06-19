@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+<link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+<link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+ <script>
+	var dojoConfig = {
+		async : true,
+		packages : [ {
+			name : "app",
+			location : "/DOJO_TEST/app"
+		} ]
+	};
+ </script>
+
+</head>
+<body class="claro">
+	<h1>Grid Test</h1>
+	<div id="grid"></div>
+
+
+		<script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+	<script>
+			require(["dojo/_base/declare","dojo/on", "dgrid/OnDemandGrid","dgrid/tree",
+					"dgrid/test/data/base", "dojo/domReady!"], 
+				function(declare,on, OnDemandGrid, tree, testStore){
+
+
+
+						var testCountryData = [{
+	    name: 'Asia',
+	    type: 'continent',
+	    child: [{
+	        id: 'CN',
+	        name: 'China',
+	        type: 'country',
+	        child: [{
+	            id: 'Shanghai',
+	            name: 'Shanghai',
+	            type: 'city'
+	        }]
+	    }, {
+	        id: 'IN',
+	        name: 'India',
+	        type: 'country',
+	        parent: 'AS',
+	        child: [{
+	            id: 'Calcutta',
+	            name: 'Calcutta',
+	            type: 'city',
+	        }]
+	    }]
+	}, {
+	    id: 'Nairobi',
+	    name: 'Nairobi',
+	    type: 'city'
+	}, {
+	    id: 'Khartoum',
+	    name: 'Khartoum',
+	    type: 'city'
+	}];
+	
+	testCountryDataMemory = new Memory({
+		data: testCountryData,
+		clickedNode:testCountryData,
+		getChildren: function(parent, options){
+			
+			return parent.child;
+		},
+		mayHaveChildren: function(parent){
+			return parent.type != "city";
+		}
+		
+	});
+
+	
+	// global var testSyncCountryStore
+	testSyncCountryStore = new Observable(testCountryDataMemory);
+	
+	testCountryStore = new DeferredWrapper(testSyncCountryStore);
+	
+	
+					
+					function nbspFormatter(value){
+						return value === undefined || value === "" ? "&nbsp;" : value;
+					}
+
+					var StandardGrid = declare([OnDemandGrid]);
+					
+					window.grid = new StandardGrid({
+						store: testCountryStore,
+						columns: [
+							tree({label: "Name", field:"name", sortable: false, editOn: "dblclick"}),
+							{label:"Population", field:"population"}
+						]
+					}, "treeGrid");
+					
+					
+				});
+			
+			
+		</script>
+</head>
+<body class="claro">
+	<h2>Lazy-loading tree grid, with editable tree cells (tree&rarr;editor)</h2>
+	<div id="treeGrid"></div>
+	
+</body>
+</html>

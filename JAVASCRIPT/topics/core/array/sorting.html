@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1 class="wqjfhqgf">Test</h1>
+</body>
+
+</html>
+<script type="text/javascript">
+
+    function defaultSort(arr) {
+    console.log("Original Arr: ", arr);
+    arr = arr.sort();
+    console.log("After sort: ", arr);
+
+}
+
+
+function sortAsNumber(arr) {
+
+    console.log("Original Arr: ", arr);
+    arr = arr.sort(function(a, b) {
+        return a - b;
+    });
+    console.log("After sort: ", arr);
+
+
+}
+
+
+
+function sortObjectByName(arr) {
+
+    console.log("Original Arr: ", arr);
+    arr = arr.sort(function(ob1, ob2) {
+
+        if (ob1.name > ob2.name) {
+            return 1;
+        }
+        if (ob1.name < ob2.name) {
+            return -1;
+        }
+        return 0;
+
+    });
+    console.log("After sort: ", arr);
+
+}
+
+
+
+var strArr = ["abc", "abb", "aac", "acc"];
+var numArr = [1, 11, 111, 12, 121];
+var objArr = [{
+    name: "praveen",
+    age: 30
+}, {
+    name: "Annu",
+    age: 29
+}, {
+    name: "Anoop",
+    age: 29
+}];
+
+var mixedNumericArray = ['80', '9', '700', 40, 1, 5, 200];
+
+//defaultSort(strArr); //Right sort
+//defaultSort(numArr); //Wrong sort: convert number as String.
+//defaultSort(objArr); //Very wrong: may be sorting on hashcode.
+//
+
+
+//sortAsNumber(numArr);
+//
+//sortObjectByName(objArr);
+
+defaultSort(mixedNumericArray);
+sortAsNumber(mixedNumericArray);
+</script>

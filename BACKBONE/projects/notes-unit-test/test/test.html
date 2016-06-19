@@ -1,0 +1,64 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>Backbone.js Tests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="js/lib/mocha.css" />
+</head>
+
+<body>
+    <div id="mocha"></div>
+    <!-- JavaScript Test Libraries. -->
+    <script src="js/lib/mocha.js"></script>
+    <script src="js/lib/chai.js"></script>
+    <script src="js/lib/sinon-chai.js"></script>
+    <script src="js/lib/sinon.js"></script>
+
+    <!-- JavaScript Core Libraries -->
+    <script src="../app/js/lib/underscore.js"></script>
+    <script src="../app/js/lib/jquery.js"></script>
+    <script src="../app/js/lib/json2.js"></script>
+    <script src="../app/js/lib/backbone.js"></script>
+    <script src="../app/js/lib/backbone.localStorage.js"></script>
+    <script src="../app/js/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../app/js/lib/showdown/showdown.js"></script>
+
+    <!--Application-->
+    <script src="../app/js/app/namespace.js"></script>
+    <script src="../app/js/app/config.js"></script>
+    <script src="../app/js/app/models/note.js"></script>
+    <script src="../app/js/app/collections/notes.js"></script>
+    <script src="../app/js/app/templates/templates.js"></script>
+    <script src="../app/js/app/views/note-nav.js"></script>
+    <script src="../app/js/app/views/note-view.js"></script>
+    <script src="../app/js/app/views/note.js"></script>
+    <script src="../app/js/app/views/notes-item.js"></script>
+    <script src="../app/js/app/views/notes-filter.js"></script>
+    <script src="../app/js/app/views/notes.js"></script>
+    <script src="../app/js/app/routers/router.js"></script>
+
+    <script>
+    var expect = chai.expect;
+    mocha.setup({
+        ui: "bdd", // BDD UI.
+        reporter: "html", // HTML reporter.
+        timeout: 4000, // 4s test timeout.
+        slow: 1000 // A "slow" test is > 1s
+    });
+    window.onload = function() {
+        mocha.run();
+    };
+    </script>
+
+    <!--Unit Test-->
+    <!--  <script src="js/app/hello.test.js"></script> -->
+    <!-- <script src="js/app/namespace.test.js"></script> -->
+    <!-- <script src="js/app/models/note.test.js"></script> -->
+
+    <script src="js/app/sinon-test.test.js"></script>
+
+</body>
+
+</html>

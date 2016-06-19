@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter</title>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app"
+        }]
+    };
+    </script>
+
+</head>
+
+<body>
+    <h1>Java like Class and Inheritance in DOJO
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require(["app/inheritance-simple2/Developer","app/inheritance-simple2/JavaScriptDeveloper"], function(Developer, JavaScriptDeveloper) {
+
+        var developer = new JavaScriptDeveloper("praveen");
+
+        developer.printSkill();
+        developer.printName();
+        developer.workOn();
+
+        console.log(developer instanceof Developer);
+        console.log(developer instanceof JavaScriptDeveloper);
+    });
+    </script>
+</body>
+
+</html>

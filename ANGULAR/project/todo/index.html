@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular: TODO</title>
+
+    <style type="text/css">
+    .main {
+        margin: 10px auto;
+        width: 900px;
+    }
+    article {
+        margin: 10px 0 50px 0;
+    }
+    .todoTextBox {
+        width: 400px !important;
+    }
+
+    .todo input{
+    	display: inline;
+    }
+
+     .todo h3{
+    	display: inline-block;
+    	margin: 3px 0;
+    }
+    .todo {
+        text-align: left;
+        width: 600px;
+        padding: 10px 15px;
+        margin: 4px;
+    }
+
+    .todo .close{
+    	float: right;
+    }
+
+    </style>
+
+    <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css">
+</head>
+
+<body ng-app="todoApp">
+
+    <article class="main container">
+
+        <h1>Angular TODO App</h1>
+
+        <article ng-controller="todoAddCtrl as clt">
+            <section class="row">
+                <form name="registerForm" ng-submit="clt.addTodo()">
+                    <section class="form-group">
+                        <label>Author</label>
+                        <input type="text" ng-model="clt.author" class="todoTextBox form-control" placeholder="Enter TODO">
+                    </section>
+                    <section class="form-group">
+                        <label>Content</label>
+                        <input type="text" ng-model="clt.content" class="todoTextBox form-control" placeholder="Enter Content">
+                    </section>
+
+                    <section class="form-group">
+                        <input type="submit" class="btn btn-default" value="Add">
+                    </section>
+                </form>
+            </section>
+        </article>
+
+        <article ng-controller="todoDisplayCtrl as clt" class="ng-cloak">
+            <div class="row" ng-repeat="todo in clt.todos()">
+                <section class="todo" ng-class="clt.getTodoBackgroundClr(todo)">
+                 <button ng-show="todo.done" ng-click="clt.deleteTodo($index)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <input ng-model="todo.done" class="checkbox" type="checkbox" value="">
+                    <h3 class="todo-title" ng-bind="todo.author"></h3>
+                    <p ng-bind="todo.content"></p>
+                </section>
+            </div>
+        </article>
+
+    </article>
+
+    <script src="../../lib/angular/angular1.3.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controller.js"></script>
+    <script src="scripts/service.js"></script>
+
+</body>
+
+</html>

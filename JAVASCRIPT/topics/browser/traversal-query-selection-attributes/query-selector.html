@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+
+    <ul id="list">
+
+        <li>A</li>
+        <li class="middle">B</li>
+        <li>C
+            <ul id="child1">
+
+                <li>CA</li>
+                <li class="middle">CB</li>
+                <li>CC</li>
+            </ul>
+        </li>
+    </ul>
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+//document.querySelector(".middle").style.backgroundColor = "#FFEBCD";
+
+//document.querySelector("#child1 .middle").style.backgroundColor = "#FFEBCD";
+
+//document.querySelector("#child1 .middle").style.backgroundColor = "#FFEBCD";
+
+console.log(document.querySelectorAll(".middle"));
+var list = document.querySelectorAll(".middle");
+for(var i =0;i< list.length;i++){
+	list[i].style.backgroundColor = "#FFEBCD";
+}
+    
+
+</script>

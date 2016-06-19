@@ -1,0 +1,13 @@
+@import "compass/reset";
+@import "compass/css3";
+
+
+
+.box{
+
+	height: 150px;
+	width: 150px;
+
+	@include border-radius(10px);
+	@include box-shadow(0 0 3px 3px #444) ;
+}

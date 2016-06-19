@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>SOAP JavaScript Client Test</title>
+    <script type="text/javascript">
+        function soap() {
+            var xmlhttp = new XMLHttpRequest(); 
+
+            xmlhttp.open('POST', 'http://taxrequest.exactor.com:80/taxrequest/v2/soap', true);
+
+
+            var sr= 
+              '<?xml version="1.0" encoding="utf-8"?>' + 
+              '<soapenv:Envelope'+
+                  'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" '+
+                  'xmlns:ws="http://ws.server.exactor.com/" ' +
+                  'xmlns:v2="http://www.exactor.com/ns/v2">' +
+                  '<soapenv:Header/>' +
+                  '<soapenv:Body>' + 
+'<ws:commit> ' + 
+'<arg0 plugin="" version="">' + 
+'<v2:MerchantId>10005427</v2:MerchantId>' + 
+'<v2:UserId>A.mourya</v2:UserId>' + 
+'<v2:CommitRequest>' + 
+'<v2:CommitDate>2015-08-31</v2:CommitDate>' + 
+'<v2:PriorTransactionId>b27f5bee-7c27-4a7c-a766-7f6f7fd97bf4</v2:PriorTransactionId>' + 
+'</v2:CommitRequest>' + 
+'</arg0>' + 
+'</ws:commit>' + 
+'</soapenv:Body>' + 
+'</soapenv:Envelope>';
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+
+                        alert('done use firebug to see response');
+                    }
+                }
+            };
+            // Send the POST request
+          // xmlhttp.setRequestHeader('SOAPAction', '');
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+            xmlhttp.send(sr);
+            // send request
+            // ...
+        }
+    </script>
+</head>
+<body>
+    <form name="Demo" action="" method="post">
+        <div>
+            <input type="button" value="Soap" onclick="soap();" />
+        </div>
+    </form>
+</body>
+<html>

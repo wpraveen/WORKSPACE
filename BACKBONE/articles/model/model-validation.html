@@ -1,0 +1,53 @@
+<!doctype html> ￼
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/backbone/underscore.js"></script>
+    <script src="../../lib/backbone/backbone.js"></script>
+    <script type="text/javascript">
+    var app = app || {};
+
+    app.Book = Backbone.Model.extend({
+
+        defaults: {
+            name: "no-name",
+            cost: "0",
+            pic: "no pic available"
+        },
+        initialize: function() {
+            console.log('This model has been initialized.');
+            this.on("invalid", function(model, error) {
+                console.log("Model is in invalid state");
+                 console.log(model);
+                console.log(error);
+            });
+        },
+
+        validate: function(attributes) {
+            if (attributes.name && attributes.name.length < 3) {
+                return "Name is too small";
+            }
+        }
+
+    });
+
+    var book1 = new app.Book({
+        name: "5 point some one",
+        cost: "100"
+    });
+
+    book1.set('name', "ab", {
+        validate: true
+    });
+
+
+
+    console.log("book: ", book1.toJSON());
+    </script>
+</body>
+
+</html>

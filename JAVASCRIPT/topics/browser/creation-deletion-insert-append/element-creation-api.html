@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>HTML Start</h1>
+
+    <script>
+        var ulEl = document.createElement("ul");
+        ulEl.setAttribute("id", "ulEl");
+
+        for (var i = 0; i < 10; i++) {
+            var liEl = document.createElement("li");
+            var liElText = document.createTextNode("Item: " + i);
+
+            liEl.appendChild(liElText);
+            ulEl.appendChild(liEl);
+        }
+
+        document.body.appendChild(ulEl);
+
+        document.getElementById("ulEl").addEventListener("click", function(event) {
+
+            alert("You have clicked: " + event.target.textContent);
+
+        })
+
+    </script>
+</body>
+
+</html>

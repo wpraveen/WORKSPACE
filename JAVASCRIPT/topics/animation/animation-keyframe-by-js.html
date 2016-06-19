@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="">
+
+
+    <style>
+
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: gray;
+		position: relative;
+	}
+
+
+	@keyframes box-bounce{
+		0% {left:0px;}
+		50% {left:500px;}
+		100% {left:0px;}
+	}
+
+    </style>
+</head>
+
+<body>
+
+<div id="box" class="box"></div>
+
+
+<br>
+
+<button id="bttn">Start</button>
+
+
+<script>
+	
+
+document.getElementById("bttn").addEventListener('click', function(event) {
+	
+var ball = document.getElementById("box");
+
+ball.style.animation = "box-bounce 0.7s infinite"
+
+});
+
+</script>
+
+</body>
+
+</html>

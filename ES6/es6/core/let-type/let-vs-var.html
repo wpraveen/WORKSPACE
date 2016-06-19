@@ -1,0 +1,27 @@
+<script type="text/javascript">
+
+
+/*
+ function test() {
+    console.log(a, b);
+    var a = "a";
+    console.log(a, b); {
+        var b = "b";
+        console.log(a, b);
+    }
+    console.log(a, b);
+}
+
+ */
+function test() {
+ for (var i = 0; i < 5; i++) {
+    console.log("loop : ", i);
+    setTimeout(function printNum() {
+        console.log("function will get called with value: ", i);
+    }, i * 1000);
+
+    console.log("set function to get called after: ", i * 1000, " sec");
+}
+}
+test();
+</script>

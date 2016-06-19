@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app/dgrid-test/tree-grid-searchable-hirachy-data"
+        }]
+    };
+    </script>
+
+    <style type="text/css">
+    #query {
+        padding: 3px;
+        font-size: 14px;
+    }
+    </style>
+
+</head>
+
+<body class="claro">
+    <h1>Searchable tree Test</h1>
+    <div id="treeGrid"></div>
+    <br>Enter query:
+    <input id="query" type="text">
+
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+            "dojo/_base/declare",
+            "dojo/on",
+            "dgrid/OnDemandGrid",
+            "dgrid/tree",
+            "app/Store",
+            "app/data",
+            "dojo/domReady!"
+        ],
+        function(declare, on, OnDemandGrid, tree, Store, data) {
+
+            console.log("Data: ", data);
+
+            var store = new Store();
+            store.setData(data);
+
+            var treeGrid = new OnDemandGrid({
+                store: store,
+                columns: [
+                    tree({
+                        className: "",
+                        label: "Name",
+                        field: "name",
+                        sortable: false,
+                        editOn: "dblclick"
+                    })
+                ]
+            }, "treeGrid");
+
+            // treeGrid.set('query', {
+            //     name: ""
+            // });
+
+            treeGrid.on(".dgrid-cell:click", function(evt) {
+                var cell = treeGrid.cell(evt);
+                console.log("DATA: ", cell.row.data);
+               // alert("You have selected: " + cell.row.data.id + " : " + cell.row.data.name);
+            });
+
+            document.getElementById("query").oninput = function(event) {
+
+                var key = event.target.value;
+                var nodes = [];
+                var data = store.data;
+
+                
+               function getNodeRecur(data,count){
+
+                 for(var i = 0;i< data.length;i++){
+                    nodes[count] = data[i];
+                    if(data.child){
+                        getNodeRecur(data.child,count++);
+
+                    }
+                    
+                }
+
+               }
+
+               getNodeRecur(data,0);
+
+
+//treeGrid.expand(treeGrid.row("Asia").element, true);
+
+               // treeGrid.expand(treeGrid.row("IN").element, true);
+
+                if (event.target.value.trim() != "") {
+                    // treeGrid.set('query', {
+                    //     name: event.target.value
+                    // });
+                    // 
+                    // 
+              
+
+                    // var openNodes = [];
+
+                    // for (var j = 0; j < store.data.length; j++) {
+                  
+                    // }
+
+
+                    //       for (var i = 0; i < store.data.length; i++) {
+                    //     if (treeGrid.row(store.data[i].id).element && openNodes.indexOf(store.data[i].id) < 0) {
+                          
+                    //         treeGrid.expand(treeGrid.row(store.data[i].id).element, false);
+
+                    //         treeGrid.row(store.data[i].id).element.style.setProperty('background-color', 'rgb(255, 255, 255)', 'important')
+
+                    //         //treeGrid.row(store.data[i].id).element.style.backgroundColor = "rgb(255, 255, 255)";
+                    //     }
+                    // }
+
+                }
+            }
+
+        });
+    </script>
+
+</html>

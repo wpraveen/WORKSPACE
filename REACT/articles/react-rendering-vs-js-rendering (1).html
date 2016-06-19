@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+
+<body>
+
+
+    <h2>React HTML</h2>
+    <div id="reactHtml"></div>
+
+    <h2>JS HTML</h2>
+    <div id="jsHtml"></div>
+
+
+    <script type="text/babel">
+
+    class ReactComponent extends React.Component {
+
+        render() {
+
+            return (
+                <p>
+                    Hello,
+                    <input type="text" placeholder="Your name here" />
+                    <span>! It is {this.props.date.toTimeString()}</span>
+                </p>
+            );
+        }
+    }
+
+
+    class JsView{
+        render(date){
+
+            var html = '<input type="text" placeholder="Your name here" /><span>! It is ' + date +'</span>';
+            document.getElementById("jsHtml").innerHTML = html;
+
+
+        }
+    }
+
+
+setInterval(function() {
+        var date = new Date();
+        ReactDOM.render(<ReactComponent date={date} />, document.getElementById('reactHtml') );
+
+
+        var jsRenderer = new JsView();
+        jsRenderer.render(date.toTimeString());
+ }, 500);
+
+
+    </script>
+</body>
+
+</html>

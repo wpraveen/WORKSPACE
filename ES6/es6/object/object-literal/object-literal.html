@@ -1,0 +1,22 @@
+<script type="text/javascript">
+function toObj(firstName, lastName) {
+    return {
+        ["first" + "Name"]: firstName,
+        lastName,
+
+        fullName(){
+
+            return this.firstName + " " + this.lastName;
+        }
+    };
+}
+
+
+let user = toObj("praveen", "singh");
+console.log(user);
+console.log(user.fullName());
+
+
+
+
+</script>

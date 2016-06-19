@@ -1,0 +1,23 @@
+a.article {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+
+    .sidebar &{
+    	color: blue;
+    }
+}
+
+
+.box{
+	
+	height: 150px;
+	width: 150px;
+
+	border:{
+		top: 1px solid gray;
+		bottom: 2px dashed red; 
+	}
+}
+

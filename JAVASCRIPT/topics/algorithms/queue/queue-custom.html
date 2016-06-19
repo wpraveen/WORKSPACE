@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1>Test</h1>
+
+    <script type="text/javascript">
+    function Queue() {
+
+        var items = [];
+
+        this.enqueue = function(element) {
+            items.push(element);
+        };
+
+        this.dequeue = function() {
+            return items.shift();
+        };
+
+        this.toString = function() {
+            return items.toString();
+        };
+    }
+
+    var myQueue = new Queue();
+    myQueue.enqueue("one");
+    myQueue.enqueue("two");
+    myQueue.enqueue("three");
+    console.log(myQueue.toString());
+    console.log("Removed: ", myQueue.dequeue());
+    console.log(myQueue.toString());
+    </script>
+</body>
+
+</html>

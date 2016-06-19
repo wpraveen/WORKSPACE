@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOJO</title>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/article"
+        }]
+    };
+    </script>
+
+</head>
+
+<body>
+    <div id="widgetContainer"></div>
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js"></script>-->
+    <script type="text/javascript">
+    require([
+            "app/deferred-api/SimpleWidget"
+        ],
+        function(SimpleWidget) {
+            var widget = new SimpleWidget();
+            //widget.placeAt("widgetContainer");
+        });
+    </script>
+</body>
+
+</html>

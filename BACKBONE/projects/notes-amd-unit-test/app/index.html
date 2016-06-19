@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>web pro sample</title>
+
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-theme.css">
+    
+</head>
+
+<body>
+
+    <div id="page-container"></div>
+
+
+    <script src="../libs/require/require.js"></script>
+    <script type="text/javascript">
+    
+
+    require(['js/config/require.config.js'], function() {
+    
+            require([
+                'backbone',
+                'app/views/test-view/TestView'
+            ], function(Backbone, App) {
+                'use strict';
+
+                App.init();
+
+            });
+});
+
+    </script>
+</body>
+
+</html>

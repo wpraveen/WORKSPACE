@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="/DOJO_TEST/dojo/resources/dojo.css">
+	<link rel="stylesheet" href="/DOJO_TEST/dgrid/css/dgrid.css">
+	<link rel="stylesheet" href="/DOJO_TEST/dgrid/css/skins/claro.css">
+</head>
+
+<style type="text/css">
+
+#grid{
+	width: 500px;
+	margin: 20px;
+}
+
+.edit
+{
+	cursor: pointer;
+}
+
+
+</style>
+<body class="claro">
+		<h1>Grid Test</h1>
+
+
+
+<div id="grid"></div>
+
+
+	<script src="/DOJO_TEST/dojo/dojo.js"></script>
+	<script type="text/javascript">
+	require(["dojo/_base/declare", "dojo/on", "dojo/store/Memory", "dgrid/OnDemandGrid", "dojo/dom-construct", "dijit/focus", "dojo/domReady!"], function(declare, on, Memory, OnDemandGrid, domConstruct, focusUtil) {
+		var books = [
+			{
+				name: "book1",
+				price: "100"
+					},
+			{
+				name: "book2",
+				price: "200"
+					},
+			{
+				name: "book3",
+				price: "300"
+					}
+    ];
+		var myStore = new Memory({
+			data: books,
+			idProperty: "name"
+		});
+		var grid = new(declare([OnDemandGrid]))({
+			store: myStore,
+			autoSave: true,
+			columns: [
+				{
+					label: "Name",
+					field: "name",
+						},
+				{
+					label: "Price",
+					field: "price",
+						},
+				{
+					label: "Edit",
+					renderCell: function(object, value, node, options) {
+						return domConstruct.create("div", {
+							class: "edit",
+							innerHTML: "edit"
+						});
+					}
+						}]
+		}, "grid");
+		grid.on(".edit:click", function(evt) {
+			console.log("The delete action");
+			var editCell = this.cell(evt);
+			var priceCell = this.left(editCell, 1);
+			var nameCell = this.left(editCell, 2);
+			this.makeCellEditable([priceCell, nameCell]);
+		}.bind(grid));
+		grid.makeCellEditable = function(cells) {
+			var textNodes = [];
+			cells.forEach(function(cell) {
+				var cellVal = cell.element.innerText;
+				cell.element.innerHTML = "";
+				var textNode = domConstruct.create("input", {
+					type: "text",
+					value: cellVal
+				}, cell.element);
+				//focusUtil.focus(textNode);
+				textNodes.push(textNode);
+			});
+			textNodes.forEach(function(textNode, index, textNodes) {
+				console.log("textNode: ", textNode);
+			});
+			textNodes.forEach(function(textNode, index, textNodes) {
+				on(textNode, "focusout", function(evt) {
+					var currentTextNode = evt.target;
+					setTimeout(function() {
+						var curtFocusNode = document.activeElement;
+						if (textNodes.indexOf(curtFocusNode) < 0) {
+						
+							console.log("None of node is active just update the store and hide all the text box");
+
+							cells.forEach(function(cell) {
+							
+							console.log("cell value: ",cell.element.firstChild.value);
+			});
+
+
+
+						}
+					}, 100);
+				});
+			});
+		} 
+	});
+</script>
+</body>
+</html>
+
+

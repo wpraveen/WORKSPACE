@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class Foo {
+            constructor(prop) {
+                console.log("I am the constructor, i get called before any one else does.");
+                this.prop = prop;
+            }
+            static staticMethod() {
+                console.log("Instance property: ", this.prop);
+                console.log('i am a static method. I command only to mighty class and not to ordinary instance.');
+            }
+
+            simpleMethod() {
+                return 'I am simple method';
+            }
+        }
+
+        let fooInstance = new Foo("A foo instance");
+
+        console.log(fooInstance);
+        console.log(fooInstance.constructor);
+
+        fooInstance.simpleMethod();
+        //fooInstance.staticMethod(); //Give error: class-simple.html:33 Uncaught TypeError: fooInstance.staticMethod is not a function
+        Foo.staticMethod();
+    </script>
+</body>
+
+</html>

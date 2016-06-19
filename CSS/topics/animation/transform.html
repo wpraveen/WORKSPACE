@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+    <style>
+
+        .container {
+            width: 800px;
+            margin: 10px auto;
+        }
+
+        .blue-box {
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            text-align: center;
+            color: white;
+            transition: all 0.9s ease;  /* This is only for animation, transform can work without it*/
+        }
+
+        .blue-box h1 {
+            line-height: 100px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .rotate45 {
+            transform: rotate(30deg);
+        }
+
+
+        .rotate360:hover {
+            transform: rotate(360deg);
+        }
+
+        .rotateAndScale:hover {
+            transform: scale(2) rotate(360deg);
+        }
+
+        .scale:hover {
+            transform: scale(2);
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+
+    <div class="blue-box rotate45">
+        <h1>Blue</h1>
+    </div>
+
+    <br><br><br>
+
+    <div class="blue-box rotate360">
+        <h1>Blue</h1>
+    </div>
+
+    <br><br>
+
+    <div class="blue-box rotateAndScale">
+        <h1>Blue</h1>
+    </div>
+
+    <br><br>
+
+    <div class="blue-box scale">
+        <h1>Blue</h1>
+    </div>
+
+    <table style="border: 1px solid gray">
+        <tr>
+            <td> <div class="blue-box scale">
+                <h1>Blue</h1>
+            </div></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

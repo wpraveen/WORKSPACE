@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1>Test</h1>
+    <script type="text/javascript">
+
+
+    function removeFirst(arr,item){
+    	var indexOfItem, newArr;
+
+    	indexOfItem = arr.indexOf(item);
+		newArr = arr.splice(indexOfItem,1);
+    	return arr;
+    }
+
+
+    var animals = new Array("dog","cat","dog","lion", "dog");
+
+    console.log(removeFirst(animals,"dog"));
+
+
+
+
+
+    </script>
+</body>
+
+</html>

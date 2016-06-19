@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<ul id="list">
+
+        <li>A</li>
+        <li class="middle">B</li>
+        <li>C
+            <ul id="child1">
+
+                <li>CA</li>
+                <li id="target">CB</li>
+                <li>CC</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+var test = {
+    test: function(){
+        this.test = "yoo";
+    }
+}
+
+
+console.log("Target : ", document.getElementById("target"));
+console.log("Target previousElementSibling: ", document.getElementById("target").previousElementSibling);
+console.log("Target nextElementSibling: ", document.getElementById("target").nextElementSibling);
+console.log("Target parentElement: ", document.getElementById("target").parentElement);
+console.log("Target parentElement childElementCount: ", document.getElementById("target").parentElement.childElementCount);
+console.log("Target parentElement firstElementChild: ", document.getElementById("target").parentElement.firstElementChild);
+console.log("Target parentElement lastElementChild: ", document.getElementById("target").parentElement.lastElementChild);
+
+
+</script>

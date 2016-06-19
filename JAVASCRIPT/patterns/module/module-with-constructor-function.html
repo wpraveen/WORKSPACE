@@ -1,0 +1,29 @@
+<script type="text/javascript">
+    function User(arg) {
+
+        var namePrefix = "Mr ";
+
+        var _tempObj= {
+
+            constructor: function(args) {
+
+                console.log("In constructor: ", args);
+                this.firstName = args.firstName;
+                this.lastName = args.lastName;
+
+            },
+
+            printName: function() {
+                return namePrefix + " " + this.firstName + " " + this.lastName;
+            }
+        }
+
+        _tempObj.constructor(arg)
+        return _tempObj;
+    }
+
+    var praveen = new User({firstName: "praveen", lastName: "singh"});
+
+    debugger;
+
+</script>

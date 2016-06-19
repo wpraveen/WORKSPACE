@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <style>
+
+
+        section {
+            display: block;
+            padding: 0;
+            border: 1px solid gray;
+            margin: 30px auto;
+        }
+
+        section > article {
+            margin: 10px;
+        }
+
+        section > h1 {
+            margin: 0;
+            margin-bottom: 15px;
+            padding: 3px;
+            background-color: lightgray;
+        }
+
+        .redBorder {
+            border: 1px solid red;
+        }
+
+        .greenBorder {
+            border: 1px solid green;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<h1>HTML Insertion</h1>
+
+<section>
+    <h1>innerHTML</h1>
+
+    <article>
+        <input type="button" value="Say hello" onclick="test_innerHTML()">
+
+        <span id="out1">replace me Hello</span>
+
+    </article>
+
+
+</section>
+
+
+<section>
+
+    <h1>insertAdjacentHTML</h1>
+    <article>
+
+        <div id="out2" class="redBorder"><h1 class="greenBorder">some text</h1></div>
+
+        <br><br>
+        <input type="button" value="beforebegin" onclick="test_insertAdjacentHTML('beforebegin')">
+        <input type="button" value="afterbegin" onclick="test_insertAdjacentHTML('afterbegin')">
+        <input type="button" value="beforeend" onclick="test_insertAdjacentHTML('beforeend')">
+        <input type="button" value="afterend" onclick="test_insertAdjacentHTML('afterend')">
+
+    </article>
+
+
+</section>
+
+<section>
+    <h1>plain text (escaped text)</h1>
+
+    <article>
+
+        <input type="button" value="Insert plain text (escaped text)" onclick="test_insertEscapeText()">
+
+        <h2>html escape string</h2>
+
+        <div id="escapetext1"></div>
+
+        <h2>html non-escape string</h2>
+
+        <div id="escapetext2"></div>
+    </article>
+
+</section>
+
+
+<script type="text/javascript">
+
+
+    function test_innerHTML() {
+
+        document.getElementById("out1").innerHTML = "hello";
+
+
+    }
+
+
+    function test_insertAdjacentHTML(value) {
+        var d1 = document.getElementById('out2');
+        d1.insertAdjacentHTML(value, '&nbsp;&nbsp;<strong>' + value + '</strong>');
+    }
+
+
+    function test_insertEscapeText() {
+
+        var htmlText = "<h1>some html heading</h1><p>some html paragraph</p>";
+
+        addInnerText(document.getElementById('escapetext1'), htmlText);
+        document.getElementById('escapetext2').innerHTML = htmlText;
+
+    }
+
+
+    function addInnerText(element, text) {
+        if (element.textContent) {
+            element.textContent = text;
+        } else {
+            element.innerText = text;
+        }
+    }
+
+
+</script>
+</body>
+
+</html>
+
+

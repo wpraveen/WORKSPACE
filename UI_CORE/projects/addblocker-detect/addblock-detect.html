@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <h1>Test</h1>
+</body>
+
+</html>
+<script type="text/javascript">
+window.onload = function() {
+    setTimeout(function() {
+        if (typeof(window.google_jobrunner) === "undefined") {
+            console.log("ad blocker installed");
+        } else {
+            console.log("no ad blocking found.");
+        }
+    }, 2000);
+};
+</script>

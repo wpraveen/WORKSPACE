@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    .container {
+        border: 2px dashed gray;
+        margin: 100px 100px;
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+    .box {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(211, 211, 211, .3);
+        color: rgba(211, 211, 211, 1);
+    }
+    .box h1 {
+        margin: 0;
+        padding: 50px 0 0 30px;
+    }
+    .skewX30deg {
+        -webkit-transform: skewX(30deg);
+        -moz-transform: skewX(30deg);
+        -ms-transform: skewX(30deg);
+        -o-transform: skewX(30deg);
+        transform: skewX(30deg);
+    }
+
+     .skewY30deg {
+        -webkit-transform: skewY(30deg);
+        -moz-transform: skewY(30deg);
+        -ms-transform: skewY(30deg);
+        -o-transform: skewY(30deg);
+        transform: skewY(30deg);
+    }
+
+
+    .skewY60deg {
+        -webkit-transform: skewY(60deg);
+        -moz-transform: skewY(60deg);
+        -ms-transform: skewY(60deg);
+        -o-transform: skewY(60deg);
+        transform: skewY(60deg);
+    }
+
+    .skewX15degY30deg {
+        -webkit-transform: skew(15deg,30deg);
+        -moz-transform: skew(15deg,30deg);
+        -ms-transform: skew(15deg,30deg);
+        -o-transform: skew(15deg,30deg);
+        transform: skew(15deg,30deg);
+    }
+    </style>
+</head>
+
+<body>
+<p>
+The skew transform function allows you to slant an element along the x- or y-axis. You can specify the skew angle by using the same choices for angles that are available in the rotate transform function. 
+</p>
+
+    <div class="container">
+        <div class="box">
+            <h1>original</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box skewX30deg">
+            <h1>skewX30deg</h1>
+        </div>
+    </div>
+
+
+     <div class="container">
+        <div class="box skewY30deg">
+            <h1>skewY30deg</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box skewY60deg">
+            <h1>skewY60deg</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box skewX15degY30deg">
+            <h1>skewX15degY30deg</h1>
+        </div>
+    </div>
+</body>
+
+</html>

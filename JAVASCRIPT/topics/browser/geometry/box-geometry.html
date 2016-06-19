@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #blue {
+            height: 100px;
+            width: 100px;
+            background-color: aqua;
+            border: 10px solid gray;
+            padding: 20px;
+            margin: 30px;
+            position: absolute;
+        }
+        
+        #red {
+            height: 50px;
+            width: 50px;
+            background-color: orangered;
+            border: 10px solid gray;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="blue">
+        <div id="red"></div>
+    </div>
+    <script>
+        var element = document.querySelector('#red');
+        elementBox = document.querySelector('#red').getBoundingClientRect();
+        console.log(element.offsetParent);
+        console.log("offset top left: ", element.offsetTop, " ", element.offsetLeft);
+        console.log("offset bottom right: ", element.offsetBottom, " ", element.offsetRight);//Undefine undefine
+        console.log("offset Height Width(border + padding + content): ", element.offsetHeight, " ", element.offsetWidth);
+        console.log("Content height and width(padding + content): ", element.clientHeight," ", element.clientWidth);
+
+        console.log("Top left: ", elementBox.top, " ", elementBox.left);
+        console.log("Bottom Right: ", elementBox.bottom, " ", elementBox.right);
+        console.log("Height: ", elementBox.height, " Width: ", elementBox.width);
+
+    </script>
+</body>
+
+</html>

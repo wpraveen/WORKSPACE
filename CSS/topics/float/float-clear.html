@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Avoid Container Collapse</title>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        background: #C77966;
+    }
+    body {
+        width: 650px;
+        background: #FFFFFF;
+        margin: 0 auto;
+        font: 90% Arial, sans-serif;
+    }
+    div {
+        width: 40px;
+        height: 40px;
+        padding: 35px;
+    }
+    section {
+        background: #E3CDA4;
+        border: 1px solid black;
+        padding: 15px;
+    }
+    .one {
+        background: #703030;
+    }
+    .two {
+        background: #7E827A;
+    }
+    .three {
+        background: #2F343B;
+    }
+    .floatLeft {
+        float: left;
+    }
+    .clearFixBlock {
+        clear: both;
+    }
+    .claerFixAuto:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    </style>
+</head>
+
+<body>
+
+
+    <h2>Way 1</h2>
+    <section>
+        <div class="one floatLeft">Box One</div>
+        <div class="two floatLeft">Box Two</div>
+        <div class="three floatLeft">Box Three</div>
+        <div class="clearFixBlock"></div>
+    </section>
+
+    <h2>Way 2</h2>
+
+    <section class="claerFixAuto">
+        <div class="one floatLeft">Box One</div>
+        <div class="two floatLeft">Box Two</div>
+        <div class="three floatLeft">Box Three</div>
+    </section>
+
+</body>
+
+</html>

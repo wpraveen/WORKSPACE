@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        .carousel {
+            white-space: nowrap;
+             position: relative;
+            border: 1px solid red;
+            width: 800px;
+            overflow: hidden;
+            margin: 0 auto;
+            padding-left: 100px;
+        }
+        
+        .card {
+            height: 200px;
+            width: 300px;
+            background: #f2f2f2;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+            position: static;
+        }
+
+.left-icon{
+   font-size: 4em;
+}
+        .left-nav{
+             height: 100px;
+
+    width: 100px;
+    position: absolute;
+    top: 50%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <button onclick="carousel.prev()">Previous</button>
+    <button onclick="carousel.next()">Next</button>
+    <div class="carousel" id="carousel">
+        <div class="left-nav"><i class="left-icon">&lt;</i></div>
+        <div id="card1" class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 5</div>
+        <div class="card">Card 6</div>
+        <div class="card">Card 7</div>
+        <div class="card">Card 8</div>
+        <div class="card">Card 9</div>
+        <div class="card">Card 10</div>
+    </div>
+
+
+    <script>
+        function Carousel(args) {
+
+            return {
+
+                moveX: 0,
+                
+                element: args.element,
+
+                next: function() {
+                    
+                    var cards = document.getElementById("carousel").querySelectorAll(".card");
+                    carousel.moveX+= 100;
+                    console.log(carousel.moveX);
+                    [].forEach.call(cards,function(ele){
+                        
+                        ele.style["transform"] = "translate(" + carousel.moveX +"px,0)";
+                    });
+                    
+                    
+                },
+                prev: function() {
+                    var cards = document.getElementById("carousel").querySelectorAll(".card");
+                    carousel.moveX-= 100;
+                    console.log(carousel.moveX);
+                    [].forEach.call(cards,function(ele){
+                        
+                        ele.style["transform"] = "translate(" + carousel.moveX +"px,0)";
+                    });
+                    
+                }
+
+            }
+
+        }
+
+        var carousel = new Carousel({
+            element: document.getElementById("carousel"),
+            delay: 350
+        });
+
+    </script>
+</body>
+
+</html>

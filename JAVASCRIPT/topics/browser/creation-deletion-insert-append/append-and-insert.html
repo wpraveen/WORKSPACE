@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="append()">Append</button>
+    <button onclick="appendAfterFirst()">appendAfterFirst</button>
+    <button onclick="insertFirst()">Insert First</button>
+
+    <br>List:
+    <br>
+    <ul id="listItem">
+
+    </ul>
+
+    <script>
+        var counter = 0;
+
+        function _getElement() {
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode("Item: " + (++counter)));
+            return li;
+        }
+
+        function append() {
+
+            document.getElementById("listItem").appendChild(_getElement());
+        }
+
+        function insertFirst() {
+            var child = _getElement();
+            var listItem = document.getElementById("listItem");
+
+            listItem.insertBefore(child, listItem.firstChild);
+        }
+
+        function appendAfterFirst() {
+            var child = _getElement();
+            var listItem = document.getElementById("listItem");
+
+            listItem.firstChild.appendChild(child);
+        }
+
+        append();
+
+    </script>
+</body>
+
+</html>

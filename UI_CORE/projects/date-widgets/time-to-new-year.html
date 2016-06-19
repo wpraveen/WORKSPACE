@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+Enter no of hours and minutes:<input type="text" name="" id="hoursCount"/> &nbsp;&nbsp;
+<input type="text" name="" id="minuteCount"/>&nbsp;&nbsp;
+<input type="button" value="Start" onclick="startTimer()"/>
+<br>
+
+
+<div>
+    <span id="hoursPending"></span> : <span id="minutesPending"></span>: <span id="secondsPending"></span>
+
+</div>
+
+<script>
+    var timer;
+
+            function startTimer() {
+        var hoursCount = document.getElementById("hoursCount").value || 0;
+        var minuteCount = document.getElementById("minuteCount").value || 0;
+        var totalSeconds = (hoursCount * 60 * 60) + (minuteCount * 60);
+
+        clearInterval(timer);
+         timer = setInterval(function () {
+
+            var tempTotalSeconds = totalSeconds;
+            var seconds = Math.floor(tempTotalSeconds % 60);
+            tempTotalSeconds = tempTotalSeconds / 60;
+            var minutes = Math.floor(tempTotalSeconds % 60);
+            tempTotalSeconds = tempTotalSeconds / 60;
+            var hours = Math.floor(tempTotalSeconds % 24);
+            setTime(hours, minutes, seconds);
+
+            if(totalSeconds === 0){
+                clearInterval(timer);
+            }else{
+                totalSeconds--;
+            }
+
+
+        }, 1000);
+    }
+
+
+    function setTime(hours, minute, seconds) {
+        document.getElementById("hoursPending").innerHTML = hours;
+        document.getElementById("minutesPending").innerHTML = minute;
+        document.getElementById("secondsPending").innerHTML = seconds;
+    }
+
+
+</script>
+
+
+</body>
+</html>

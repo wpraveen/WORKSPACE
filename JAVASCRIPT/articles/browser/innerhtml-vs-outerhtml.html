@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+
+
+    <style>
+        .blue-box {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        
+        .green-box {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>HTML Start</h1>
+
+
+    <div id="blueBox" class="blue-box">
+
+
+    </div>
+
+    <script>
+        var greenBoxHtml = '<div class="green-box"></div>';
+        
+
+        //document.getElementById("blueBox").innerHTML = greenBoxHtml;
+        document.getElementById("blueBox").outerHTML = "";
+
+    </script>
+
+
+</body>
+
+</html>

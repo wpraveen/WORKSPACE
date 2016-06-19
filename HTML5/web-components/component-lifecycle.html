@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+
+<comment-widget id="commentWidget"></comment-widget>
+
+    <script type="text/javascript">
+
+    var htmlTemplate = '<div><textarea>web component</textarea><br/><input type="submit" name="" value="submit"></div>';
+
+    var CommentWidgetProto = Object.create(HTMLElement.prototype);
+
+    CommentWidgetProto.createdCallback = function() {
+        this.innerHTML = htmlTemplate;
+        console.log("Widget has created");
+    };
+
+    CommentWidgetProto.attachedCallback = function() {
+       console.log("Widget has attached");
+    };
+
+    CommentWidgetProto.detachedCallback = function() {
+       console.log("Widget has detached");
+    };
+
+    CommentWidgetProto.attributeChangedCallback = function(attrName, oldVal, newVal) {
+        console.log("Attribute has changed");
+        console.log("changed: ", attrName, "from: ", oldVal, " to: ", newVal);
+    };
+
+
+
+    var CommentWidget = document.registerElement("comment-widget", {
+        prototype: CommentWidgetProto
+    });
+
+    </script>
+</body>
+
+</html>

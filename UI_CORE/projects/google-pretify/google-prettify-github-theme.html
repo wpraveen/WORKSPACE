@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title></title>
+  <link rel="stylesheet" href="themes/tomorrow.css">
+
+  <script type="text/javascript" src="google-code-prettify/prettify.js"></script>
+
+  <style type="text/css" media="screen">
+    
+    pre.prettyprint {
+    line-height: 1.4rem;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    border: 0;
+}
+  </style>
+</head>
+<body>
+
+
+
+	<pre class="prettyprint lang-html">
+
+
+&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;meta charset="ISO-8859-1"&gt;
+    &lt;title&gt;icodingclub&lt;/title&gt;
+    &lt;link href="/resource/css/base.css" rel="stylesheet"&gt;
+
+&lt;/head&gt;
+
+&lt;script&gt;
+function dieToss() {
+  return Math.floor(Math.random() * 6) + 1;  
+}
+
+function tossASix() {
+  return new RSVP.Promise(function(fulfill, reject) {
+    var n = Math.floor(Math.random() * 6) + 1;
+    if (n === 6) {
+      fulfill(n);
+    } else {
+      reject(n);
+    }
+  });
+}
+&lt;/script&gt;
+
+</pre>
+
+
+<pre class="prettyprint lang-js">
+xhr('/api/login', function(user) {
+    showGrretings();
+    showLoadingIcon();
+    xhr('/topproducts', function(products) {
+        showProducts();
+        xhr('/dealOfTheDay', function(products) {
+            showDealOfTheDay();
+            xhr('/reviewLastPurchaseProduct', function(products) {
+                showRevieDialog();
+            });
+        });
+    });
+});
+
+</pre>
+
+
+<script type="text/javascript">prettyPrint();</script>
+</body>
+</html>

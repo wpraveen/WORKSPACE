@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+    <style type="text/css" media="screen">
+    .hide {
+        display: none;
+    }
+
+    .header-row *{
+        background-color: rgba(232,232,232,1);
+    }
+    .header-row table{
+        border: 0;
+    }
+
+    .header-row table tr{
+        border: 0;
+    }
+
+    .header-row table td{
+        border: 0;
+    }
+    </style>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/article/dgrid-test/tree-grid-simple-flat-data"
+        }]
+    };
+    </script>
+
+</head>
+
+<body class="claro">
+
+    <h1>On Demand TreeGrid Test</h1>
+    <div id="treeOnDemandGrid"></div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h1>TreeGrid Test</h1>
+    <div id="treeGrid"></div>
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+            "dojo/_base/declare",
+            "dojo/_base/lang",
+            "dojo/on",
+            "dgrid/Grid",
+            "dgrid/OnDemandGrid",
+            "dojo/store/Memory",
+            "dgrid/Keyboard",
+            "dgrid/Selection",
+            "dgrid/selector",
+            "dgrid/tree",
+            "app/data",
+            "dojo/dom-construct",
+            "dojo/dom-class",
+            "dojo/domReady!"
+        ],
+        function(declare, lang, on, Grid, OnDemandGrid, Memory, Keyboard, Selection, selector, tree, data, domConstruct, domClass) {
+            function getStore() {
+                var store = new Memory({
+                    data: data,
+                    getChildren: function(parent, options) {
+                        return this.query(
+                            lang.mixin({}, options && options.originalQuery || null, {
+                                parent: parent.id
+                            }),
+                            options);
+                    },
+                    mayHaveChildren: function(parent) {
+                        return parent.type != "city";
+                    },
+                    query: function(query, options) {
+                        query = query || {};
+                        options = options || {};
+                        if (!query.parent && !options.deep) {
+                            // Default to a single-level query for root items (no parent)
+                            query.parent = undefined;
+                        }
+                        return this.queryEngine(query, options)(this.data);
+                    }
+                });
+                return store;
+            }
+            var StandardGrid = declare([OnDemandGrid, Keyboard, Selection]);
+            new StandardGrid({
+                store: getStore(),
+                renderRow: function(item, options) {
+                    if (item.type === "header") {
+                        var node = this.inherited(arguments);
+
+                        domClass.add(node,"header-row");
+                        //node.innerHTML = 'YOOOOO';
+                        return node;
+                    }
+                    return this.inherited(arguments);
+                },
+                columns: [
+                    tree({
+                        label: "Name",
+                        field: "name",
+                        sortable: true,
+                        editOn: "dblclick",
+                        renderCell: function(object, value, node, options) {
+
+                            if (object.type === "header") {
+                                node.innerHTML = value;
+                            }else{
+                                node.innerHTML = value;
+                            }
+                        }
+                    }),
+                    {
+                        label: "Age",
+                        field: "age",
+                        renderCell: function(object, value, node, options) {
+
+                            if (object.type === "header") {
+                                node.innerHTML = "";
+                            }else{
+                                node.innerHTML = value;
+                            }
+                        }
+                    }
+                ]
+            }, "treeOnDemandGrid");
+            /**
+             * Tree properly work on Store backed Grid.
+             * Mixing both will work but may confuse tree.
+             * @type {Grid}
+             */
+            // var treeGrid = new Grid({
+            //     store: getStore(),
+            //     columns: [
+            //         tree({
+            //             label: "Name",
+            //             field: "name",
+            //             sortable: false,
+            //             editOn: "dblclick"
+            //         })
+            //     ]
+            // }, "treeGrid");
+            // treeGrid.renderArray(data);
+        });
+    </script>
+
+</html>

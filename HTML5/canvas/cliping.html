@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title></title>
+
+    <style type="text/css">
+    body {
+        background-color: #FAF8FB;
+    }
+    canvas {
+        border: 1px solid gray;
+        background-color: #FFFFFF;
+        margin: 30px 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas2" height="250px" width="500px;">Canvas is not supported</canvas>
+
+    <script>
+    (function createArc() {
+
+        var can = document.getElementById("canvas1");
+        var ctx = can.getContext("2d");
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(1, 1, can.width - 2, can.height - 2);
+ctx.save();
+        // make a triangle with top at mid canvas
+        ctx.beginPath();
+        ctx.moveTo(can.width / 2, 0);
+        ctx.lineTo(can.width, can.height);
+        ctx.lineTo(0, can.height);
+        ctx.closePath();
+        // make the current path the clipping region
+        ctx.clip();
+        // rectangle and text are clipped to the triangle
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, can.width, can.height);
+        ctx.fillStyle = "red";
+        ctx.font = "24pt Helvetica";
+        ctx.fillText("Triangular Clipped text", 20, 180);
+
+        ctx.restore();
+        ctx.fillStyle = "red";
+        ctx.font = "24pt Helvetica";
+           ctx.fillText("Triangular Clipped text-restored", 20, 150);
+
+
+    }());
+    </script>
+</body>
+
+</html>

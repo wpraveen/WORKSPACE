@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        .na ol li {
+            color: red;
+        }
+        
+        .na ol>li {
+            color: red;
+        }
+        /*Select just next sibling, not nested*/
+        
+        .na ol li.test + li {
+            color: red;
+        }
+        /*Select all followed siblings, not nested*/
+        
+        ol li.test ~ li {
+            color: red;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1>Relational selectors</h1>
+
+    <ol>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+
+        <ul>
+            <li>item a</li>
+            <li>item b</li>
+            <li>item c</li>
+        </ul>
+        <li class="test">item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+        <li>item 7</li>
+    </ol>
+</body>
+
+</html>

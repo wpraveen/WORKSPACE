@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter</title>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app"
+        }]
+    };
+    </script>
+
+</head>
+
+<body>
+    Person Class
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+
+    require(["app/declare-safemixin/ChildClass"], function(ChildClass) {
+   
+        var cClass = new ChildClass();
+        cClass.save();
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<script type="text/javascript">
+	
+var foo = (function(){
+	var name = "John Dae";
+
+
+	return (function(){
+
+		this.bar = function(){
+			console.log("My name is : ", name);
+		};
+
+		return this;
+
+	})();
+
+})();
+
+
+foo.bar();
+
+
+
+
+</script>

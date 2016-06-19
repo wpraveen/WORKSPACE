@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    <title></title>
+
+
+    <style type="text/css">
+    body {
+        background-color: #FAF8FB;
+    }
+    canvas {
+        border: 1px solid gray;
+        background-color: #FFFFFF;
+        margin: 30px 10px;
+    }
+    </style>
+</head>
+
+<body>
+
+
+    <canvas id="canvas1" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas2" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas3" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas4" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas5" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas6" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas7" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas8" height="250px" width="500px;">Canvas is not supported</canvas>
+
+    <script>
+    (function createRectangle() {
+
+        var ctx = document.getElementById("canvas1").getContext("2d");
+        ctx.fillStyle = '#FFEFD5';
+        ctx.fillRect(50, 70, 120, 80);
+
+        // ctx.strokeStyle = '#ff00ff';
+        // ctx.lineWidth = 2;
+        // ctx.strokeRect(120, 10, 80, 80);
+
+        // ctx.strokeStyle = '#ff00ff';
+        // ctx.lineWidth = 10;
+        // ctx.strokeRect(240, 10, 80, 80);
+
+        // ctx.fillStyle = '#FFEFD5';
+        // ctx.fillRect(360, 10, 80, 80);
+        // ctx.clearRect(360, 10, 20, 20);
+        // ctx.clearRect(380, 40, 20, 20);
+
+    }());
+
+    (function createLine() {
+
+        var ctx = document.getElementById("canvas2").getContext("2d");
+        ctx.strokeStyle = "#696969";
+        ctx.lineWidth = 10;
+
+        //default - butt
+        ctx.beginPath();
+        ctx.moveTo(20, 30);
+        ctx.lineTo(400, 30);
+        ctx.stroke();
+        ctx.closePath();
+
+        //square
+        ctx.lineCap = 'square';
+        ctx.beginPath();
+        ctx.moveTo(20, 60);
+        ctx.lineTo(400, 60);
+        ctx.stroke();
+        ctx.closePath();
+
+        //round
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(20, 90);
+        ctx.lineTo(400, 90);
+        ctx.stroke();
+        ctx.closePath();
+
+    }());
+
+    (function createJointLine() {
+
+        var ctx = document.getElementById("canvas3").getContext("2d");
+
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 15;
+
+        ctx.lineJoin = 'bevel';
+        ctx.beginPath();
+        ctx.moveTo(10, 10);
+        ctx.lineTo(100, 10);
+
+        ctx.lineTo(100, 50);
+        ctx.lineTo(200, 50);
+        //ctx.stroke();
+       // ctx.closePath();
+
+
+        // ctx.lineJoin = 'round';
+        // ctx.lineCap = 'round';
+        // ctx.beginPath();
+        // ctx.moveTo(10, 110);
+        // ctx.lineTo(100, 110);
+        // ctx.lineTo(100, 160);
+        // ctx.lineTo(200, 160);
+        // ctx.stroke();
+        // ctx.closePath();
+
+    }());
+
+    (function createArc() {
+
+        var ctx = document.getElementById("canvas4").getContext("2d");
+        ctx.strokeStyle = "#00FF00";
+        //“ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)”
+
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(100, 60, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(250, 60, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 360, true);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(100, 180, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 45, false);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(250, 180, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 45, true);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(400, 180, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 45, true);
+        ctx.stroke();
+        ctx.closePath();
+        ctx.strokeStyle = "red";
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.arc(400, 180, 50, (Math.PI / 180) * 0, (Math.PI / 180) * 45, false);
+        ctx.stroke();
+        ctx.closePath();
+
+    }());
+
+    (function createJointLine() {
+
+        var ctx = document.getElementById("canvas3").getContext("2d");
+
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 15;
+
+        ctx.lineJoin = 'bevel';
+        ctx.beginPath();
+        ctx.moveTo(10, 10);
+        ctx.lineTo(100, 10);
+        ctx.lineTo(100, 50);
+        ctx.lineTo(200, 50);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(10, 110);
+        ctx.lineTo(100, 110);
+        ctx.lineTo(100, 160);
+        ctx.lineTo(200, 160);
+        ctx.stroke();
+        ctx.closePath();
+
+    }());
+
+    (function createArc() {
+
+        var ctx = document.getElementById("canvas5").getContext("2d");
+        ctx.strokeStyle = "#00FF00";
+        //“ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)”
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        var angleInRadians = 45 * Math.PI / 180;
+        ctx.rotate(angleInRadians);
+        ctx.fillStyle = "red";
+        ctx.fillRect(100, 100, 50, 50);
+
+    }());
+
+    (function createTransparentBox() {
+
+        var ctx = document.getElementById("canvas6").getContext("2d");
+
+        ctx.fillStyle = "rgba(128, 128, 128, 1)";
+        ctx.fillRect(10, 100, 80, 80);
+        ctx.fillStyle = "rgba(128, 128, 128, 0.3)";
+        ctx.fillRect(60, 150, 80, 80);
+
+    }());
+
+    (function createTransparentBox() {
+
+        var ctx = document.getElementById("canvas7").getContext("2d");
+
+        ctx.strokeStyle = "black";
+        var ctrlX = 15;
+        var ctrlY = 150;
+        var ctrlXa = 50;
+        var ctrlYa = 300;
+        ctx.beginPath();
+        ctx.moveTo(10, 10);
+     //ctx.lineTo(100, 50);
+        ctx.quadraticCurveTo(100, 50, 50, 50);
+        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.moveTo(0, 0);
+        // ctx.bezierCurveTo(ctrlX, ctrlY, ctrlXa, ctrlYa, wide, high);
+        // ctx.stroke();
+
+    }());
+
+
+
+      (function createTransparentBox() {
+
+        var context = document.getElementById("canvas8").getContext("2d");
+
+  context.fillStyle = "rgba(128, 128, 128, 1)";
+ context.beginPath();
+context.rect(110, 25, 370, 335); 
+
+ rect(310, 55, 70, 35, true); 
+ context.fill(); 
+
+
+
+      
+      function rect(x, y, w, h, direction) {
+  if (direction) { // CCW
+      context.moveTo(x, y);
+      context.lineTo(x, y + h);
+      context.lineTo(x + w, y + h);
+      context.lineTo(x + w, y);
+      context.closePath(); 
+  }
+  else {
+      context.moveTo(x, y);
+      context.lineTo(x + w, y);
+      context.lineTo(x + w, y + h);
+      context.lineTo(x, y + h);
+      context.closePath(); 
+  }
+}
+
+    }());
+    </script>
+</body>
+
+</html>

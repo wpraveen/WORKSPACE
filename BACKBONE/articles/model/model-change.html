@@ -1,0 +1,60 @@
+<!doctype html> ￼
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/backbone/underscore.js"></script>
+    <script src="../../lib/backbone/backbone.js"></script>
+    <script type="text/javascript">
+    var app = app || {};
+
+    app.Book = Backbone.Model.extend({
+
+        defaults: {
+            color: "no-name",
+            cost: "0",
+            pic: "no pic available"
+        },
+
+        initialize: function() {
+            console.log("Creating book with name: ", this.get("name"));
+            
+
+            this.on("change", function(){
+                console.log("Something has changed");
+            });            
+
+            this.on("change:cost", function(obj){
+                console.log("Change of cost: ", obj);
+                console.log("New cost: ", this.get("cost"));
+            });   
+
+        },
+
+
+        setCost: function(newCost){
+            console.log("We are setting cost now: ", newCost);
+        }
+
+    });
+
+    var book1 = new app.Book({
+        name: "5 point some one",
+        cost: "100"
+    });
+
+    console.log("book: ", book1.toJSON());
+
+    setTimeout(function() {
+        
+book1.set("cost", 80);
+
+
+    }, 2000);
+    </script>
+</body>
+
+</html>

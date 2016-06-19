@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            margin: 20px;
+            background-color: antiquewhite;
+            display: inline-block;
+                
+        }
+        
+        .box-link a {
+            margin: 0 5px;
+        }
+        
+        .box:target {
+            border: 4px solid red;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box-link"><a href="#tab1">Tab 1</a> <a href="#tab2">Tab 2</a> <a href="#tab3">Tab 3</a></div>
+
+    <div id="tab1" class="box">
+    </div>
+
+    <div id="tab2" class="box">
+    </div>
+
+    <div id="tab3" class="box">
+    </div>
+</body>
+
+</html>

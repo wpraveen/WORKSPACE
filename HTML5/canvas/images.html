@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title></title>
+
+
+    <style type="text/css">
+    body {
+        background-color: #FAF8FB;
+    }
+    canvas {
+        border: 1px solid gray;
+        background-color: #FFFFFF;
+        margin: 30px 10px;
+    }
+    </style>
+</head>
+
+<body>
+
+
+    <canvas id="canvas1" height="600px" width="600px;">Canvas is not supported</canvas>
+    <canvas id="canvas2" height="300px" width="300px;">Canvas is not supported</canvas>
+
+    <script>
+    (function createRectangle() {
+        console.log("Printing");
+        var context = document.getElementById("canvas1").getContext("2d");
+        var image = new Image();
+        image.src = 'stevejobs_medium.jpg';
+        image.onload = function(e) {
+            context.drawImage(image, 0, 0);
+        };
+    }());
+
+    (function createRectangle() {
+   console.log("Printing");
+        var context = document.getElementById("canvas2").getContext("2d");
+        var image = new Image();
+        image.src = 'stevejobs_medium.jpg';
+        image.onload = function(e) {
+            context.drawImage(image, -80, 0);
+        };
+    }());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+    class User extends React.Component {
+
+        render() {
+
+            return (
+                <div>
+                    <Name name={this.props.name}/>
+                    <br/>
+                    <Age age={this.props.age}/>
+                </div>
+            );
+        }
+    }
+
+
+    class Name extends React.Component {
+
+
+        render() {
+
+
+            return (
+                    <div>Name: <span>{this.props.name}</span></div>
+            );
+        }
+    }
+
+
+
+
+        class Age extends React.Component {
+
+            render() {
+
+                return (
+                        <div>Age: <span>{this.props.age}</span></div>
+                );
+            }
+        }
+
+var user = {
+    name: "Praveen",
+    age: 31
+};
+
+
+
+setInterval(function() {
+    ReactDOM.render(<User {...user} age="32"/>, document.getElementById('example') );
+ }, 500);
+
+
+    </script>
+</body>
+
+</html>

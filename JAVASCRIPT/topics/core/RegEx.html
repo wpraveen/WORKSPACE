@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <h1>RegEx Test</h1>
+</body>
+
+</html>
+<script type="text/javascript">
+function getIndexStr(str, fromIndex, toIndex) {
+    var resultStr = "";
+    for (var i = 0; i < str.length; i++) {
+        
+        if (i === fromIndex) {
+            resultStr += "[";
+        }
+        resultStr += str[i];
+
+        if (i === toIndex) {
+            resultStr += "]";
+        }
+    }
+    return resultStr;
+}
+
+function showMatch(regex, str) {
+    /**
+     * You can't run the below code with rest of the code, as 'test' consumes the first result.
+     */
+    //console.log("Is String matched: ", regex.test(str);
+    var result, noOfResults = 0;
+    console.log("\nString: ",str,"\t\t\tRegEx: ", regex.source);
+    while ((result = regex.exec(str)) !== null) {
+        console.log("Found: ", result[0], "\tFound from:[", result.index, "-", regex.lastIndex, "]\tIn:", getIndexStr(result.input, result.index, regex.lastIndex - 1));
+        noOfResults++;
+        /** if global flag is not there, this loop will go infinite loop, 
+         *	as regex will just check for first match every time,
+         * and keep repeating and we will never get result = null.
+         */
+        if (!regex.global) {
+            break;
+        }
+    }
+    console.log("Total no of results: ", noOfResults);
+}
+
+
+
+function getFirstMatch(regex, str) {
+    var result = regex.exec(str);
+
+    if(result[0]){
+        return result[0];
+    }
+
+    return null;
+}
+
+function testMatch(regex, str) {
+    //console.log("Is String matched: ", regex.test(str);
+    
+}
+
+
+
+// /**
+//  * Simple matching
+//  */
+//showMatch(/abc/, "abcabcABCabcabC");		//Print 1 token
+//showMatch(/abc/g, "abcabcABCabcabC");		//Print 3 token
+//showMatch(/abc/ig, "abcabcABCabcabC");		//Print 5 token
+
+/**
+ * Start Matching
+ */
+//showMatch(/^a/,"an b");   	//true
+//showMatch(/^a/,"bn ab");    //false: even a is present after space, it just match start of String
+
+
+/**
+ * Matching End
+ */
+//showMatch(/a$/,"bca");
+//showMatch(/a$/,"bca ab");	//false: even though 'a' is present after at end of first word.
+
+
+/**
+ * Matching Zero and more
+ */
+
+//showMatch(/ab*/,"ab abbbbb a b"); 
+//showMatch(/ab*/g,"ab abbbbb a b"); 
+
+
+/**
+ * Matching One and more
+ */
+
+//showMatch(/ab+/,"ab"); 		//true
+//showMatch(/ab+/,"abbbbb");	//true
+//showMatch(/ab+/,"a");			//false
+//showMatch(/ab+/,"b");			//false
+
+
+/**
+ * Matches the preceding character 0 or 1 time
+ */
+
+
+//showMatch(/e?le?/g, "angel angle oslo ab");
+
+
+/**
+ * (The decimal point) matches any single character except the newline character.
+ */
+
+//showMatch(/.n/,"an"); 		//true
+//showMatch(/.n/,"on"); 		//true
+//showMatch(/.n/,"not"); 		//false
+//showMatch(/.n/,"I am not"); 		//true
+
+
+/**
+ * Found first name
+ */
+
+//showMatch(/praveen (?=kumar|singh)/i,"Mr Praveen Kumar Singh");
+//showMatch(/praveen (?=Kumar|Singh)/i,"Mr Praveen Singh");
+//showMatch(/praveen (?=Kumar|Singh)/i,"Praveen Sharma");		// No result: Print Praveen only if it followed by Kumar or Singh 
+															// else no result, diffrent then just searching for Praveen
+
+/**
+ * OR Matching
+ */
+
+//showMatch(/green|red/ig,"Green Apple");
+//showMatch(/green|red/ig,"Red Apple");
+//showMatch(/green|red/ig,"Pink Apple");
+
+/**
+ * Match a String with aplhanumeric, _, -,space/length 3-10
+ */
+
+//showMatch(/^[0-9a-zA-Z_*\s*]{3,10}$/,"123_ab");
+//showMatch(/^[0-9a-zA-Z_*\s*]{3,10}$/,"123 ab");
+//showMatch(/^[0-9a-zA-Z_*s*]{3,10}$/,"123ab");
+//showMatch(/^[0-9a-zA-Z_*s*]{3,10}$/,"1a");    //fail as length is less than 3
+//showMatch(/^[0-9a-zA-Z_*s*]{3,10}$/,"12345onetwothrwwfour");    //fail as length is more than 10
+//showMatch(/^[0-9a-zA-Z_*]{3,10}$/,"_b");
+//showMatch(/^[0-9a-zA-Z_]{3,10}$/,"123_ab");
+//showMatch(/^[0-9a-zA-Z]{3,10}$/,"abc,d123");
+//showMatch(/^[0-9a-zA-Z\s*]{3,10}$/,"Praveen Kumar");
+
+
+console.log("GOT: ", /^[1-9]{1}[0-9]{0,4}[1-9]{1}$/.test("101"));
+
+
+
+</script>

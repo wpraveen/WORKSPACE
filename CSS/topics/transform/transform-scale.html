@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    .container {
+        border: 2px dashed gray;
+        margin: 100px 100px;
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+    .box {
+        width: 150px;
+        height: 150px;
+         background-color: rgba(211, 211, 211, .3);
+        color: rgba(211, 211, 211, 1);
+    }
+    .box h1 {
+        margin: 0;
+        padding: 50px 0 0 30px;
+    }
+    .scale-twice {
+        -webkit-transform: scale(2, 2);
+        -moz-transform: scale(2, 2);
+        -ms-transform: scale(2, 2);
+        -o-transform: scale(2, 2);
+        transform: scale(2, 2);
+    }
+     .scale-half {
+        -webkit-transform: scale(.5, .5);
+        -moz-transform: scale(.5, .5);
+        -ms-transform: scale(.5, .5);
+        -o-transform: scale(.5, .5);
+        transform: scale(.5, .5);
+    }
+    </style>
+</head>
+
+<body>
+
+  <div class="container">
+        <div class="box">
+            <h1>original</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="box scale-twice">
+            <h1>scale-twice</h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="box scale-half">
+            <h1>scale-half</h1>
+        </div>
+    </div>
+</body>
+
+</html>

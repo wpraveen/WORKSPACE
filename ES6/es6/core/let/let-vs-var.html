@@ -1,0 +1,35 @@
+<script type="text/javascript">
+
+
+ function test() {
+    //console.log(a, b); //un. und
+
+    let a = "a";
+    //console.log(a, b); //a, und
+
+    {
+        let b = "b";
+        console.log(a, b); // a, b
+    }
+    //console.log(a, b);      //a,undefine
+}
+
+
+
+// function test() {
+//
+// //var
+//  for (let i = 0; i < 5; i++) {
+//
+//     console.log("loop : ", i);
+//     setTimeout(function printNum() {
+//
+//         console.log("function will get called with value: ", i);
+//     }, i * 1000);
+//
+//     console.log("set function to get called after: ", i * 1000, " sec");
+// }
+//
+// }
+test();
+</script>

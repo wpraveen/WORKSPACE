@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+</head>
+
+<body>
+    <div id="list"></div>
+
+    <script>
+    require([
+            "dgrid/OnDemandList",
+            "dojo/store/Memory",
+            "dojo/store/Observable"
+        ],
+        function(OnDemandList, Memory, Observable) {
+
+            var store = new Observable(new Memory({
+                data: []
+            }));
+
+            var treeGrid = new OnDemandList({
+                store: store
+            }, "list");
+
+            setTimeout(function() {
+                console.log("Setting initial data");
+                data.forEach(function(item) {
+                    store.put(item);
+                });
+            }, 3000);
+
+
+            // setTimeout(function() {
+            //     store.remove(1);
+            // }, 6000);
+
+        });
+
+    /* -- DATA --*/
+
+
+    var data = ["one","two"];
+    </script>
+
+</html>

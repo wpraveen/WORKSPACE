@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Demo</title>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="TestController as ctrl">
+        <div ng-repeat="user in ctrl.users">
+         <span class="label" ng-bind="$index + 1"></span>
+            <span class="label" ng-bind="user.name"></span>&nbsp;&nbsp;
+            <span class="status" ng-bind="user.age"></span>
+        </div>
+    </div>
+    <article class="scripts">
+        <script src="../../lib/angular/angular1.3.js"></script>
+        <script src="controller.js"></script>
+    </article>
+</body>
+
+</html>

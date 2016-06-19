@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Counter</title>
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app"
+        }]
+    };
+    </script>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script src="/DOJO_TEST/lib/dojo/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require(["dojo/query"],
+        function(query) {
+            query("#test").innerHTML = "Hello World";
+        });
+    </script>
+</body>
+
+</html>

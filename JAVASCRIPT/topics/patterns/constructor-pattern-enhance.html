@@ -1,0 +1,17 @@
+<script>
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+
+}
+
+Person.prototype.sayName = function() {
+    alert("Hi " + this.firstName + "" + this.lastName);
+};
+
+var john = new Person("John", "Dae");
+
+var jane = new Person("Jane", "Dae");
+
+var isSame = john.sayName === jane.sayName;
+</script>

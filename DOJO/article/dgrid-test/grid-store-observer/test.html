@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+</head>
+
+<body>
+    <h1>Simple Grid Test</h1>
+    <div id="grid"></div>
+
+    <script>
+    require([
+            "dgrid/OnDemandGrid",
+            "dojo/store/Memory",
+            "dojo/store/Observable",
+            "dgrid/editor"
+        ],
+        function(OnDemandGrid, Memory, Observable, editor) {
+
+
+   /* -- COLUMNS --*/
+
+    var columns = [editor({
+        label: "First Name",
+        field: "firstName",
+        sortable: true,
+        editor: "text"
+
+    }), editor({
+        label: "Last Name",
+        field: "lastName",
+        sortable: true,
+        editor: "text"
+    }), {
+        label: "Age",
+        field: "age",
+        sortable: true,
+    }];
+
+
+            var store = new Observable(new Memory({
+                data: data
+            }));
+
+            var treeGrid = new OnDemandGrid({
+                store: store,
+                columns: columns
+            }, "grid");
+
+
+window.treeGrid = treeGrid;
+
+            // store.setData(data);
+            // data.forEach(function(item) {
+            //     store.put(item);
+            // });
+
+            // setTimeout(function() {
+            //     console.log("In Timeout");
+            //     store.put({
+            //         id: 3,
+            //         firstName: "Peter",
+            //         lastName: "Jones",
+            //         age: 23
+            //     });
+            // }, 2000);
+
+
+
+
+
+
+
+            setTimeout(function() {
+
+                console.log("doing filtering");
+                    var results = store.query({firstName:"John"});
+
+                        console.log("results: ", results);
+
+            }, 2000);
+
+
+
+
+
+
+
+
+        });
+
+
+
+    /* -- DATA --*/
+
+    var data = [{
+        id: 1,
+        firstName: "John",
+        lastName: "Doe",
+        age: 21,
+    }, {
+        id: 2,
+        firstName: "Anna",
+        lastName: "Smith",
+        age: 22
+    }];
+    </script>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+
+
+/**
+ * True values
+ */
+console.log(Boolean(true),true);// true true
+console.log(Boolean("abc"),!!"abc"); // true true
+console.log(Boolean(1),Boolean(-1), !!1,!!-1); // true true true true
+console.log(Boolean({}),!!{}); // true true
+
+
+
+/**
+ * Falsy value
+ */
+console.log(Boolean(false),false);// false false
+console.log(Boolean(""),!!""); // false false
+console.log(Boolean(0),Boolean(NaN), !!0,!!NaN); // false false false false
+console.log(Boolean(null),!!null); // false false
+console.log(Boolean(undefined),!!undefined); // false false
+</script>

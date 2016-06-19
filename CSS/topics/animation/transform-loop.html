@@ -1,0 +1,60 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>CSS animations: Example 3</title>
+    <style type="text/css">
+        .alert-box {
+            width:100px;
+            height: 100px;;
+        }
+
+        .image-icon{
+            padding-left: 20px !important;
+            background-image: url("alert-red.png");
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: contain;
+            width:16px;
+            height: 16px;
+
+            -webkit-animation-duration: 1s;
+            -webkit-animation-name: glow-alert;
+            -webkit-animation-iteration-count: infinite;
+            animation-duration: 1s;
+            webkit-animation-name: glow-alert;
+            animation-iteration-count: infinite;
+        }
+
+
+
+        @keyframes glow-alert {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.5);
+            }
+        }
+        @-webkit-keyframes glow-alert {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.5);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="alert-box">
+
+    <div class="image-icon"></div>
+
+    I am alert box
+</div>
+</body>
+</html>

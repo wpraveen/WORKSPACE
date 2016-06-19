@@ -1,0 +1,22 @@
+/* line 1, nesting.scss */
+a.article {
+  text-decoration: none;
+}
+/* line 3, nesting.scss */
+a.article:hover {
+  text-decoration: underline;
+}
+/* line 7, nesting.scss */
+.sidebar a.article {
+  color: blue;
+}
+
+/* line 13, nesting.scss */
+.box {
+  height: 150px;
+  width: 150px;
+  border-top: 1px solid gray;
+  border-bottom: 2px dashed red;
+}
+
+/*# sourceMappingURL=nesting.css.map */

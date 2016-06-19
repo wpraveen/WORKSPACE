@@ -1,0 +1,110 @@
+<html>
+
+<head>
+
+    <style>
+        .report-form-wrapper {
+            margin: 50px;
+            border: 1px solid #bfbfbf;
+            background-color: #DCDCDC;
+            min-width: 500px;
+        }
+        
+        .report-form {
+            border: 1px solid #bfbfbf;
+            border-bottom: 1px solid #DCDCDC;
+            background-color: white;
+            position: relative;
+            top: -12px;
+        }
+        
+        .form-line-container {
+            display: table;
+            border-collapse: separate;
+            border-spacing: 8px;
+            margin: 10px 5%;
+            margin-right: 60px;
+            table-layout: auto;
+        }
+        
+        .form-line-container h1 {}
+        
+        .form-line {
+            display: table-row;
+            line-height: 2.6rem;
+        }
+        
+        .form-line .item {
+            display: table-cell;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 70%;
+        }
+        
+        .full-width{
+             width: 100%;
+        }
+        
+        .form-line .separator.dot {
+            display: table-cell;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .form-line .separator.dot span {
+            width: 0;
+            display: block;
+        }
+        
+        .form-line .separator.dot span:after {
+            content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 55px 0 5px;
+        }
+        
+        .form-line h1.bottom-line {}
+        
+        .action {
+            position: relative;
+        }
+        
+        .action .link {
+            position: absolute;
+            top: 0;
+            left: 50px;
+        }
+    </style>
+
+    <body>
+
+        <article class="report-form-wrapper">
+            <section class="report-form">
+                <section class="form-line-container">
+                    <section class="form-line">
+                        <div class="item">Part 1: Composing an Essay Essay Essay Essay</div>
+                        <div class="separator dot">
+                            <span></span>
+                        </div>
+                        <div class="item">10000</div>
+                    </section>
+                </section>
+                <section class="form-line-container">
+                    <section class="form-line">
+                        <div class="item">Part 2: Thinking</div>
+                        <div class="separator dot">
+                            <span></span>
+                        </div>
+                        <div class="item">
+                            <div class="action">2000
+                                <div class="link">Adjust</div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </article>
+        </article>
+
+</html>

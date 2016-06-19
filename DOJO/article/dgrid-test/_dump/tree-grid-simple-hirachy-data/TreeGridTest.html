@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/app/dgrid-test/tree-grid-simple-hirachy-data"
+        }]
+    };
+    </script>
+
+</head>
+
+<body class="claro">
+    <h1>Grid Test</h1>
+    <div id="treeGrid"></div>
+
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+    	"dojo/_base/declare",
+    	"dojo/on", 
+    	"dgrid/OnDemandGrid", 
+    	"dgrid/tree",
+        "app/data", 
+        "dojo/domReady!"
+        ],
+        function(declare, on, OnDemandGrid, tree, Data) {
+
+            new OnDemandGrid({
+                store: new Data().store,
+                 
+                columns: [
+                    tree({
+                        label: "Name",
+                        field: "name",
+                        sortable: false,
+                        editOn: "dblclick"
+                    })
+                ]
+            }, "treeGrid");
+
+        });
+    </script>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Document</title>
+    <style>
+        span {
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Click to delete : list count <span id="listCount"></span></h1>
+
+
+    <ul id="listItems">
+        <li>Item 1 <span> X</span></li>
+        <li>Item 2 <span> X</span></li>
+        <li>Item 3 <span> X</span></li>
+        <li>Item 4 <span> X</span></li>
+        <li>Item 5 <span> X</span></li>
+    </ul>
+
+    <script>
+
+
+    var test = document.querySelector("#yoo");
+
+        document.getElementById("listItems").addEventListener("click", function(event) {
+            event.target.parentElement.outerHTML = "";
+            showListCount();
+        });
+
+        function showListCount() {
+
+            var listCount = document.getElementById("listItems").querySelectorAll("li").length;
+            document.getElementById("listCount").textContent = listCount;
+        }
+
+        showListCount();
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/mini-pro/tree-grid-searchable-flat-data"
+        }]
+    };
+    </script>
+
+    <style type="text/css">
+    #query {
+        padding: 3px;
+        font-size: 14px;
+    }
+
+    #treeGrid{
+        width: 400px;
+        margin-left: 30px;
+    }
+    </style>
+
+</head>
+
+<body class="claro">
+     <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter query:
+    <input id="query" type="text">
+    <br> <br>
+    <div id="treeGrid"></div>
+    <br> 
+
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+            "dojo/_base/lang",
+            "dojo/_base/declare",
+            "dojo/on",
+            "dgrid/OnDemandGrid",
+            "dgrid/tree",
+            "app/Store",
+            "app/data",
+            "dojo/domReady!"
+        ],
+        function(lang, declare, on, OnDemandGrid, tree, Store, data) {
+
+            var store = new Store();
+            store.setData(data);
+
+            var treeGrid = new OnDemandGrid({
+                store: store,
+                //showHeader: false,
+                columns: [
+                    tree({
+                        label: "Chart of Account",
+                        field: "name",
+                        renderCell: function(object, value, node, options) {
+
+                            node.innerHTML = "<b>" + object.accountNumber + "</b>&nbsp;&nbsp;" + object.name;
+
+                        },
+                        sortable: false
+                    })
+                ]
+            }, "treeGrid");
+
+            //var dataCopy = lang.clone(data);
+
+            document.getElementById("query").oninput = function(event) {
+
+                console.log(event.target.value);
+
+                var serachKey = event.target.value;
+
+                store.setData(fetchResult(serachKey));
+
+                treeGrid.refresh();
+
+                // if (serachKey.trim() === "") {
+                //     treeGrid.set('query', {});
+                // } else {
+                //     treeGrid.set('query', {
+                //         queryToken: serachKey
+                //     });
+
+                // }
+
+            }
+
+            function fetchResult(key) {
+
+                var searchResult = [];
+                for (var i = 0; i < data.length; i++) {
+
+                    // Check if name or accountNo statt with
+                    if (data[i].name.indexOf(key) === 0 || data[i].accountNumber.indexOf(key) === 0) {
+
+                        searchResult.push(lang.clone(data[i]));
+                    }
+
+                }
+                
+                removeParentIdFromOrphans(searchResult);
+                console.log("this.searchResult:", searchResult);
+                return searchResult;
+            }
+
+            function removeParentIdFromOrphans(searchResult) {
+
+                for (var i = 0; i < searchResult.length; i++) {
+                    var foundParent = false;
+
+                    for (var j = 0; j < searchResult.length; j++) {
+
+                        if(searchResult[i].parentId === searchResult[j].id){
+
+                            foundParent = true;
+                            break;
+
+                        }
+
+                    }
+
+                    if(!foundParent){
+                        delete searchResult[i]["parentId"];
+
+                    }
+
+                }
+
+            }
+
+        });
+    </script>
+
+</html>

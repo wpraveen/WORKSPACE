@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <style>
+        section {
+            padding: 5px 15px 0 0;
+            margin: 50px;
+            border: 1px solid gray;
+            float: left;
+        }
+        
+        section h1 {
+            font-weight: 500;
+            font-size: 1em;
+            color: gray;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .one li:nth-of-type(odd) {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .two li:nth-child(even) {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .three li:nth-child(2n) {
+            color: red;
+            font-weight: bold;
+        }
+        
+        .four li:nth-child(2n+1) {
+            color: red;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="one">
+        <h1>:nth-child(odd)</h1>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+
+    </section>
+    
+    
+     <section class="two">
+        <h1>:nth-child(even)</h1>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+
+    </section>
+    
+    
+
+</body>
+
+</html>

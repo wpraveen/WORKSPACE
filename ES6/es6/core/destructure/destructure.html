@@ -1,0 +1,28 @@
+<script type="text/javascript">
+function toObj(fName, lName) {
+    return {
+        firstName: fName,
+        lastName: lName
+    };
+}
+
+var user = toObj("praveen", "singh");
+console.log("user: ", user);
+
+
+var {firstName,lastName} = user;
+
+//var {firstName: fn,lastName: ln} = user;
+
+console.log("firstName: ", firstName);
+console.log("lastName: ", lastName);
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    //var {fn: firstName,ln: lastName} = user;
+    //var {firstName: fn,lastName: ln, ["firstName"] + ["lastName"] : fullName} = user;
+</script>

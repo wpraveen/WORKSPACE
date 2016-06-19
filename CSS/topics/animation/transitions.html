@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+    <style>
+
+        .blue-box{
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+        }
+
+        .width-transition {
+
+            transition:width 0.4s ease;
+        }
+
+        .width-transition-delay{
+            transition:width 0.5s ease 0.5s;
+        }
+
+
+       .blue-box:hover{
+            width: 300px;
+        }
+
+        .custom-transition{
+            transition:width 0.4s cubic-bezier(1,0,0,1);
+        }
+
+
+        .multiple-transition {
+
+            transition: width 0.3s, background-color 2.5s ease-out;
+        }
+
+        .multiple-transition:hover{
+
+            width: 300px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+<h3>Simple</h3>
+<div class="blue-box width-transition">
+</div>
+
+<h3>Simple with initial and after delay of 0.5s</h3>
+<div class="blue-box width-transition-delay">
+</div>
+
+
+<h3>Custom</h3>
+<div class="blue-box width-transition custom-transition">
+</div>
+
+
+<h1>Transition doesn't expand parent</h1>
+
+<div style="border:6px solid gray;width:150px">
+
+
+    <div class="blue-box width-transition">
+    </div>
+
+</div>
+
+<h1>Multiple Transition</h1>
+
+
+
+<div class="blue-box multiple-transition">
+</div>
+
+</body>
+</html>

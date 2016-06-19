@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+class User {
+    constructor() {
+        this.userName = "praveen";
+    }
+
+    static getUserType() {
+        console.log("username: ", this.userName);   //use of instance property inside static method.
+        return "A simple user";
+    }
+}
+
+let userInstance = new User();
+
+console.log("User name: ", userInstance.userName);
+console.log("By Class: ", User.getUserType());
+console.log("By instance: ", userInstance.getUserType());   //Calling a static method on an instance.
+    </script>
+</body>
+
+</html>

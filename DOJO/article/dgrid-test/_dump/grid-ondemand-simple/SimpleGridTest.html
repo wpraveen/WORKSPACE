@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dojo/resources/dojo.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/dgrid.css">
+    <link rel="stylesheet" href="/DOJO_TEST/lib/dgrid/css/skins/claro.css">
+
+
+    <script>
+    var dojoConfig = {
+        async: true,
+        packages: [{
+            name: "app",
+            location: "/DOJO_TEST/article/dgrid-test/grid-ondemand-simple"
+        }]
+    };
+    </script>
+    
+
+    <div id="test"></div>
+</head>
+
+<body class="claro">
+    <h1>Simple Grid Test</h1>
+    <div id="grid"></div>
+
+
+    <script src="/DOJO_TEST/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script>
+    require([
+            "dgrid/OnDemandGrid",
+            "dojo/store/Memory",
+            "app/data",
+            "dojo/dom-construct"
+        ],
+      
+        function(OnDemandGrid, Memory, data, domConstruct) {
+
+
+           // document.getElementById("test").innerHTML = data[0].firstName;
+
+            function getStore() {
+                var store = new Memory({
+                    data: data
+                });
+                return store;
+            }
+
+            function getColumns() {
+
+                var columns = [{
+                    label: "First Name",
+                    field: "firstName",
+                    sortable: true
+                    
+                    
+                },
+                {
+                    label: "Last Name",
+                    field: "lastName",
+                    sortable: true,
+                },{
+                    label: "Age",
+                    field: "age",
+                    sortable: true,
+                }];
+                return columns;
+            }
+
+            var treeGrid = new OnDemandGrid({
+                store: getStore(),
+                columns: getColumns(),
+                renderRow: function(item,options){
+
+                    if(item.type === "header"){
+                        return domConstruct.toDom("<div>I'm a Node</div>");
+                    }
+                     return this.inherited(arguments);
+                    
+                }
+            }, "grid");
+
+        });
+    </script>
+
+</html>

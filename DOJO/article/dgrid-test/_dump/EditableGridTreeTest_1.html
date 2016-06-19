@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="/DOJO_TEST/dojo/resources/dojo.css">
+	<link rel="stylesheet" href="/DOJO_TEST/dgrid/css/dgrid.css">
+	<link rel="stylesheet" href="/DOJO_TEST/dgrid/css/skins/claro.css">
+	
+	
+	<style type="text/css">
+	#treeGrid
+	{
+	
+	width: 500px;
+	margin-left: 50px;
+	
+	}
+	
+	.elmentCell
+	{
+	
+	border-right: 0;
+	
+	
+	}
+	
+	.actionCell
+	{
+	
+	border-left: 0;
+	border-right: 0;
+	width: 50px;
+	
+	}
+	
+	.actionCell > div
+	{
+	cursor: pointer;
+	}
+	
+	
+	
+	
+	
+	
+	
+#treeGrid tr:hover .actionCell> div
+	{
+	
+display: block;	
+	}
+	
+	.actionCell > div
+	{
+	
+display: none;
+
+	
+	}
+
+	
+	</style>
+</head>
+<body class="claro">
+		<h1>Grid Test</h1>
+<div id="grid"></div>
+
+
+
+
+	<script src="/DOJO_TEST/dojo/dojo.js"></script>
+	
+	
+	<script>
+	require(["dojo/on", "dgrid/OnDemandGrid", "dgrid/tree", "dgrid/editor", "dgrid/Keyboard",
+	         "dojo/_base/declare", "grid/data", "dojo/query", "dojo/domReady!"
+	     ],
+	     function (on, Grid, tree, editor, Keyboard, declare, testStore, query) {
+	         var count = 0; // for incrementing edits from button under 1st grid
+
+	         function nbspFormatter(value) {
+	             // returns "&nbsp;" for blank content, to prevent cell collapsing
+	             return value === undefined || value === "" ? "&nbsp;" : value;
+	         }
+
+	         var StandardGrid = declare([Grid, Keyboard]);
+
+	         window.grid = new StandardGrid({
+	             store: testCountryDataMemory,
+	             columns: [
+	                 tree(editor({
+	                     label: "Name",
+	                     field: "name",
+	                     className: "elmentCell",
+	                     sortable: false,
+	                     editOn: "dblclick"
+	                 })), {
+	                     label: "Edit",
+	                     field: "edit",
+	                     className: "actionCell editCell",
+	                     showHeader: false,
+	                     renderHeaderCell: function (node) {
+
+
+	                         node.style.display = "none";
+
+	                     },
+	                     renderCell: function (object, value, node, options) {
+
+
+	                         var div = document.createElement("div");
+	                         div.className = "renderedCell";
+	                         div.innerHTML = 'edit';
+	                         return div;
+	                     }
+	                 }, {
+	                     label: "Delete",
+	                     field: "delete",
+	                     className: "actionCell deleteCell",
+	                     showHeader: false,
+	                     renderHeaderCell: function (node) {
+
+
+	                         node.style.display = "none";
+
+	                     },
+	                     renderCell: function (object, value, node, options) {
+	                         var div = document.createElement("div");
+	                         div.className = "renderedCell";
+	                         div.innerHTML = 'Delete';
+	                         return div;
+	                     }
+	                 }
+	             ],
+	             save: function () {
+	                 console.log("Calling save");
+
+	                 console.log(this.store);
+	             }
+	         }, "treeGrid");
+
+
+console.log(grid);
+	         grid.on("dgrid-datachange", function (evt) {
+	             console.log("Data has been change");
+
+
+	             var value = evt.value;
+	             var oldValue = evt.oldValue;
+	             console.log("oldValue: " + oldValue);
+	             console.log("value: " + value);
+	             console.log(evt.grid.store.data);
+
+	         });
+
+	         grid.on(".editCell > div:click", function (evt) {
+	             grid.edit(grid.left(grid.cell(evt)));
+	         });
+
+
+	         grid.on(".deleteCell > div:click", function (evt) {
+	             var cell = grid.cell(evt);
+	             var row = grid.row(evt);
+	             var dataCell = grid.left(grid.left(grid.cell(evt)));
+
+
+	             console.log("Row: ", grid.row(evt));
+	             console.log("elemnet: ", dataCell.element.innerText.trim());
+	             if (deleteFromJson(grid.store.data, "id", dataCell.element.innerText.trim())) {
+	                 row.element.style.display = "none";
+	             }
+
+	         });
+
+	     });
+
+
+	 function deleteFromJson(node, key, value, parent) {
+	     for (var i = 0; i < node.length; i++) {
+	         var obj = node[i];
+	         for (var key in obj) {
+	             var attrName = key;
+	             var attrValue = obj[key];
+	             if (attrValue === value) {
+	                 node.splice(i, 1);
+	                 console.log("Deleted: ", value);
+	                 console.log("Parent now: ", node);
+	                 return true;
+	             }
+
+	         }
+	         deleteFromJson(obj, key, value, node);
+	     }
+
+	     return false
+
+	 }
+
+
+	 function saveGrid() {
+	     window.grid.save();
+	     console.log("Store Data: ", grid.store.data);
+
+	 }
+		</script>
+	</head>
+	<body class="claro">
+		<h2>Lazy-loading tree grid, with editable tree cells (tree&rarr;editor)</h2>
+		<div id="treeGrid"></div>
+		<button onclick="saveGrid();">Save</button>
+		<button onclick="window.grid.revert();">Revert</button>
+	</body>
+	</html>

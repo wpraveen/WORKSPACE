@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css"></style>
+</head>
+
+<body>
+    <!--option #1-->
+    <!-- <comment-widget></comment-widget> -->
+
+
+    <script type="text/javascript">
+        var CommentWidgetProto = Object.create(HTMLElement.prototype);
+
+        Object.create(HTMLElement.prototype);
+
+
+        CommentWidgetProto.createdCallback = function () {
+            this.innerHTML = '<div><textarea>yooo</textarea><br/><input type="submit" name="" value="submit"></div>';
+        };
+
+        var CommentWidget = document.registerElement("comment-widget", {
+            prototype: CommentWidgetProto
+        });
+
+        //option #2
+        //var comment = new CommentWidget();
+
+        //option #3
+        var comment = document.createElement("comment-widget");
+
+        //document.body.appendChild(comment);
+
+        document.body.innerHTML = "<comment-widget />";
+    </script>
+</body>
+
+</html>

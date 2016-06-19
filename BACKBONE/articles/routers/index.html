@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+   In route controller
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../lib/backbone/underscore.js"></script>
+    <script src="../../lib/backbone/backbone.js"></script>
+    <script type="text/javascript">
+   
+   var TodoRouter = Backbone.Router.extend({
+  /* define the route and function maps for this router */
+  routes: {
+    "about" : "showAbout",
+    "search/:query" : "searchTodos",
+    "search/:query/p:page" : "searchTodos"
+  },
+
+  showAbout: function(){
+
+    console.log("In about");
+  },
+
+  searchTodos: function(query, page){
+    var page_number = page || 1;
+    console.log("Page number: " + page_number + " of the results for todos containing the word: " + query);
+  }
+});
+
+var myTodoRouter = new TodoRouter();
+
+Backbone.history.start();
+
+    </script>
+</body>
+
+</html>

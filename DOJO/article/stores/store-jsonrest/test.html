@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script src="/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require(["dojo/store/JsonRest",
+            "dojo/store/Memory",
+            "dojo/store/Cache",
+            "dojo/store/Observable",
+            "dojo/when"
+        ],
+        function(JsonRest, Memory, Cache, Observable, when) {
+
+            var masterStore = new JsonRest({
+                target: "/user/"
+            });
+
+            var cacheStore = new Memory({});
+
+            var store = new Cache(masterStore, cacheStore);
+
+            // setTimeout(function() {
+
+            //     when(store.get(1), function(items) {
+            //         console.log(items);
+            //     });
+            // }, 3000);
+
+            // setTimeout(function() {
+
+            //     when(store.get(1), function(items) {
+            //         console.log(items);
+            //     });
+            // }, 1000);
+            // 
+
+            setTimeout(function() {
+ var result = cacheStore.query({name:"praveen",age: 31});
+                    debugger;
+                when(store.query({name:"praveen",age: 31}), function(items) {
+                    console.log(items);
+                });
+            }, 3000);
+
+              setTimeout(function() {
+
+
+                var result = cacheStore.query({name:"praveen",age: 31});
+                    debugger;
+                when(store.query({name:"praveen",age: 31}), function(items) {
+                    console.log(items);
+                });
+            }, 5000);
+
+            //  setTimeout(function() {
+
+            //     when(store.query("name=praveen"), function(items) {
+            //         console.log(items);
+            //     });
+            // }, 5000);
+
+
+            // setTimeout(function() {
+            //     store.get(1).then(function(items) {
+            //         console.log(items);
+            //     });
+            // }, 8000);
+
+            // setTimeout(function() {
+            //     store.add({
+            //         id: 4,
+            //         name: "prabhat"
+            //     }).then(function(response) {
+            //         console.log(response);
+            //     });
+            // }, 500);
+
+            //  setTimeout(function() {
+            //     store.get().then(function(items) {
+            //         console.log(items);
+            //     });
+            // }, 1000);
+
+        });
+    </script>
+</body>
+
+</html>

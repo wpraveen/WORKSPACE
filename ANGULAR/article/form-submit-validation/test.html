@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Demo</title>
+    <style>
+        input[type="text"].ng-dirty.ng-valid { background-color: green;
+        }
+        input[type="text"].ng-dirty.ng-invalid-required {
+            background-color: red; }
+        input[type="text"].ng-dirty.ng-invalid-minlength { background-color: lightpink;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+<div ng-controller="TestController as ctrl">
+    <form ng-submit="ctrl.submitForm()">
+        <input class="username" type="text" ng-model="ctrl.user.name" required ng-minlength="4">
+        <input type="text" ng-model="ctrl.user.age">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    <article class="scripts">
+        <script src="../../lib/angular/angular1.3.js"></script>
+        <script src="controller.js"></script>
+    </article>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Demo</title>
+</head>
+<body>
+
+
+<div ng-controller="TestController as ctrl">
+    <form ng-submit="ctrl.submitForm()">
+
+        <ng-form name="user">
+
+            <input type="text" ng-model="ctrl.user.name">
+            <input type="text" ng-model="ctrl.user.age">
+
+
+        </ng-form>
+
+        <ng-form name="address">
+            <input type="text" ng-model="ctrl.address.city">
+            <input type="text" ng-model="ctrl.address.city">
+
+
+        </ng-form>
+
+
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+    <article class="scripts">
+        <script src="../../lib/angular/angular1.3.js"></script>
+        <script src="controller.js"></script>
+    </article>
+</body>
+</html>

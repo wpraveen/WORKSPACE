@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script src="/lib/dojo/dojo.js" data-dojo-config="async: true"></script>
+    <script type="text/javascript">
+    require(["dojo/store/JsonRest",
+            "dojo/store/Memory",
+            "dojo/store/Cache",
+            "dojo/store/Observable",
+            "dojo/when"
+        ],
+        function(JsonRest, Memory, Cache, Observable, when) {
+
+            var masterStore = new JsonRest({
+                target: "/txns/",
+            });
+
+            var cacheStore = new Memory({});
+
+            var store = new Cache(masterStore, cacheStore);
+
+            when(store.query({
+                lowDate: "2015-05-01",
+                highDate: "2015-05-30"
+            }), function(items) {
+                console.log("Data LOaded: ", items);
+            });
+
+            function doQuery(date) {
+
+                var results = cacheStore.query({
+                    date: date
+                });
+
+                if (results.length > 0) {
+                    return results;
+                }
+            }
+
+            setTimeout(function() {
+               var data = doQuery("2015-05-12");
+
+               if(data){
+                data.forEach(function(item){
+                     console.log("qury data: ", item);
+                });
+               }
+
+              
+            }, 2000);
+
+        });
+    </script>
+</body>
+
+</html>

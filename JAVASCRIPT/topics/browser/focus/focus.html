@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<input type="text" placeholder="input1" id="input1">&nbsp;<input type="text" placeholder="input2" id="input2">&nbsp;<input type="text" placeholder="input3" id="input3">&nbsp;
+
+
+<div id="focusInput"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+document.getElementById("focusInput").innerHTML = "No one has focus right now";
+
+setTimeout(function(){
+document.getElementById("input1").focus();
+
+document.getElementById("focusInput").innerHTML = "Input with focus: " + document.activeElement.id;
+
+},3000);
+
+setTimeout(function(){
+document.getElementById("input2").focus();
+
+document.getElementById("focusInput").innerHTML = "Input with focus: " + document.activeElement.id;
+
+},6000);
+
+
+setTimeout(function(){
+document.getElementById("input3").focus();
+
+document.getElementById("focusInput").innerHTML = "Input with focus: " + document.activeElement.id;
+
+},9000);
+
+</script>

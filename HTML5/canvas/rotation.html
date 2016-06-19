@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title></title>
+
+    <style type="text/css">
+    body {
+        background-color: #FAF8FB;
+    }
+    canvas {
+        border: 1px solid gray;
+        background-color: #FFFFFF;
+        margin: 30px 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" height="250px" width="500px;">Canvas is not supported</canvas>
+    <canvas id="canvas2" height="250px" width="500px;">Canvas is not supported</canvas>
+
+    <script>
+    (function createArc() {
+
+        var context = document.getElementById("canvas1").getContext("2d");
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        var angleInRadians = 45 * Math.PI / 180;
+        var x = 100;
+        var y = 100;
+        var width = 50;
+        var height = 50;
+        context.translate(x + .5 * width, y + .5 * height);
+        context.rotate(angleInRadians);
+        context.fillStyle = "red";
+        context.fillRect(-.5 * width, -.5 * height, width, height);
+    }());
+
+
+    (function createArc() {
+
+        var context = document.getElementById("canvas2").getContext("2d");
+        var x = 50;
+        var y = 50;
+        context.font = "30px serif"
+        context.fillStyle = "#FF0000";
+
+        context.fillText("Hello World!", x, y)
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.translate(x, y);
+        context.rotate(45 * Math.PI / 180);
+
+        context.fillText("Hello World!", x, y);
+        context.fillText("Hello World!", x + 60, y - 80);
+        context.fillText("Hello World!", x + 120, y - 140);
+        context.fillText("Hello World!", x + 180, y - 200);
+
+    }());
+    </script>
+</body>
+
+</html>

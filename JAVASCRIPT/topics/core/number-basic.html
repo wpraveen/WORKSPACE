@@ -1,0 +1,65 @@
+<html>
+
+<body>
+
+</body>
+
+</html>
+<script type="text/javascript">
+/**
+ * Check for Number
+ */
+
+/**
+ * Using parseInt
+ */
+// console.log(parseInt("12") === 12); //true
+// console.log(parseInt("  12  ") === 12); //true: No need of trim prefix and suffix space
+// console.log(parseInt("12somechar") === 12); //true: trim suffix chars: confusing, wrong behavior…………………(1)
+// console.log(parseInt("   12somechar") === 12); //true: trim forward space and suffix chars
+// console.log(parseInt("somechar12somechar") === 12); //fasle: Can't trim prefix chars
+// console.log(parseInt("12") === 12); //true
+// console.log(parseInt("012") === 12); //true: implicit parse on base 10
+// console.log(parseInt("012", 10) === 12); //true: explicit parse on base 10
+// console.log(parseInt("012", 8) === 12); //fasle: explicit parse on base 8
+// console.log(parseInt("012", 16) === 12); //fasle: explicit parse on base 16
+// 
+
+
+
+
+/**
+ * Using Number
+ */
+
+// console.log(Number("12") === 12); //true
+// console.log(Number("  12  ") === 12); //true: 
+// console.log(Number("000000012") === 12); //true: 
+// console.log(Number("12somechar") === 12); //false: can't trunk trailing chars: right behaviour
+
+
+
+/**
+ * Using + Operator
+ */
+// console.log(+("12") === 12); //true
+// console.log(+("  12  ") === 12); //true
+// console.log(+("12somechar") === 12); //false:  can't trunk trailing chars: right behaviour
+
+
+/**
+ * Using isNaN
+ */
+
+// console.log(isNaN(NaN));	//true
+// console.log(isNaN(10));		//false - 10 is a number
+// console.log(isNaN("10"));	//false - can be converted to number 10
+// console.log(isNaN("blue"));	//true - cannot be converted to a number
+// console.log(isNaN(true));	//false - can be converted to number 1
+
+
+/**
+ * Using Check isNumber?
+ */
+  
+</script>

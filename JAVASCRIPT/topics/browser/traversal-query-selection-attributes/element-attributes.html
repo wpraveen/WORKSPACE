@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<h1>Accessing attributes</h1>
+
+<div id="myDiv" data-myid="12345" data-myname="praveen">12345 - praveen</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    console.group("Using getAttribute");
+    console.log("value: ", document.getElementById("myDiv").getAttribute("data-myname"));
+    console.groupEnd();
+
+    console.group("Using .attributes");
+    //Below code give error for some strange resaon.
+    //console.log("By .attributes: ", document.getElementById("myDiv").attributes.data-myname.value);
+    console.log("Node", document.getElementById("myDiv").attributes["data-myname"]);
+    console.log("name: : ", document.getElementById("myDiv").attributes["data-myname"].name);
+    console.log("value:: ", document.getElementById("myDiv").attributes["data-myname"].value);
+    console.groupEnd();
+
+    console.group("Using .dataset(this will fail in IE10)");
+    console.log("value: ", document.getElementById("myDiv").dataset.myname);
+    console.groupEnd();
+
+</script>

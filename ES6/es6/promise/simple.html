@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+
+    <script type="text/javascript">
+        var user = {
+            firstName: "Praveen",
+            lastName: "Singh"
+        };
+
+        function fakeServer() {
+            return new Promise(function pr(resolve, reject) {
+                document.write("We will wait now for 3sec");
+                setTimeout(function() {
+                    //resolve(user);
+                    reject({
+                        status: "ERROR",
+                        msg: "Something bad happen..."
+                    });
+                }, 3000)
+            });
+        }
+
+        fakeServer().then(function(data) {
+            document.write("<pre>" + JSON.stringify(data, null, 4) + "</pre>");
+        }, function(error) {
+            document.write("<pre style='color:red'>" + error.msg + "</pre>");
+            console.error(error);
+        });
+    </script>
+</body>
+
+</html>

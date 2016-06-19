@@ -1,0 +1,22 @@
+<script>
+
+let user = {
+
+    firstName: "praveen",
+
+    lastName: "singh",
+
+    profileUrl: "#myprofileurl.com",
+
+    printFullName(){
+        console.log(`My first name is ${this.firstName} and last name is ${this.lastName}`);
+    },
+    writeHTMLFullName(){
+        document.write(`<h1><a href="${this.profileUrl}">My first name is ${this.firstName} and last name is ${this.lastName}</a></h1>`);
+    }
+
+}
+user.printFullName();
+user.writeHTMLFullName();
+
+</script>

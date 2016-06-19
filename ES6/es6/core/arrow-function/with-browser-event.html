@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+
+    <input id="userName" name="userName" type="text" value="praveen">
+    <button type="button" name="button" id="arrowFun">Say hi by arrow function</button>
+    <button type="button" name="button" id="bindKey">Say hi by bindKey</button>
+    <script type="text/javascript">
+        var eventHelper = {
+            hiPrefix: "Helllloooo  ",
+
+            init: function() {
+
+                let byArrow = "By fat arrow";
+                document.querySelector("#arrowFun").addEventListener("click", () => {
+                    this.sayHello(byArrow)
+                });
+                //VS
+
+                let byBind = "By bind";
+                document.querySelector("#bindKey").addEventListener("click", this.sayHello.bind(this,byBind));
+
+            },
+
+            sayHello: function(byWhom) {
+                console.log("Inside sayHello1");
+                var userName = document.getElementById("userName").value;
+                alert(this.hiPrefix + " " + userName + " :" + byWhom);
+            }
+        }
+
+        eventHelper.init();
+    </script>
+
+</body>
+
+</html>
